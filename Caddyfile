@@ -3,10 +3,11 @@
 	encode gzip zstd
 
 	# Rutas de la API (Backend Go)
-	handle_path /api/* {
+	handle /api/* {
 		# Redirige el tráfico mediante Docker a "backend" en el puerto 8080
 		reverse_proxy backend:8080
 	}
+
 
 	# Frontend (Astro SSG)
 	handle {
