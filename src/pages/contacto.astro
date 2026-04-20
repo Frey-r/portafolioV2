@@ -59,16 +59,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <span class="material-symbols-outlined" style="font-size: 14px;">trending_up</span>
             <span>INSIGHT DESTACADO</span>
           </div>
-          <a href="#" class="contact-card__insight-link" aria-label="Ver artículo">
+          <a href="#" id="linkedin-link" target="_blank" rel="noopener noreferrer" class="contact-card__insight-link" aria-label="Ver artículo">
             <span class="material-symbols-outlined">open_in_new</span>
           </a>
         </div>
-        <p class="contact-card__insight-quote">
-          "La arquitectura de las aplicaciones web modernas requiere un balance entre rendimiento bruto y una estructura de código mantenible..."
+        <p class="contact-card__insight-quote" id="linkedin-quote">
+          Cargando último insight...
         </p>
         <div class="contact-card__insight-stats">
-          <span><span class="material-symbols-outlined" style="font-size: 14px;">thumb_up</span> 1.2k</span>
-          <span><span class="material-symbols-outlined" style="font-size: 14px;">comment</span> 84</span>
+          <span><span class="material-symbols-outlined" style="font-size: 14px;">thumb_up</span> <span id="linkedin-likes">--</span></span>
+          <span><span class="material-symbols-outlined" style="font-size: 14px;">comment</span> <span id="linkedin-comments">--</span></span>
         </div>
       </div>
 
@@ -144,6 +144,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
     });
   }
+
+  // Formatting helper
+  function formatNumber(num) {
+    if (num >= 1000) {
+      return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+    }
+    return num;
+  }
+
+  // Fetch LinkedIn Insight Data
+  async function fetchLinkedInInsight() {
+    try {
+      const res = await fetch('/api/linkedin/top-post');
+      if (res.ok) {
+        const jsonResponse = await res.json();
+        const post = jsonResponse.data; // The actual post is inside the generic 'data' wrapper
+        const quoteEl = document.getElementById('linkedin-quote');
+        const likesEl = document.getElementById('linkedin-likes');
+        const commentsEl = document.getElementById('linkedin-comments');
+        const linkEl = document.getElementById('linkedin-link');
+
+        if (quoteEl) quoteEl.textContent = `"${post.text}"`;
+        if (likesEl) likesEl.textContent = formatNumber(post.likes);
+        if (commentsEl) commentsEl.textContent = formatNumber(post.comments);
+        if (linkEl) linkEl.href = post.url;
+      }
+    } catch (e) {
+      console.error('Failed to fetch LinkedIn insight:', e);
+      // Fallback
+      const quoteEl = document.getElementById('linkedin-quote');
+      if (quoteEl) quoteEl.textContent = '"La arquitectura de las aplicaciones web modernas requiere un balance entre rendimiento bruto y una estructura de código mantenible..."';
+      const likesEl = document.getElementById('linkedin-likes');
+      if (likesEl) likesEl.textContent = '1.2k';
+      const commentsEl = document.getElementById('linkedin-comments');
+      if (commentsEl) commentsEl.textContent = '84';
+    }
+  }
+
+  // Fetch on load
+  fetchLinkedInInsight();
 </script>
 
 <style>

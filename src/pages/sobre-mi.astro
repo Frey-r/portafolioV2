@@ -22,8 +22,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="about-hero__image">
         <div class="about-hero__image-wrap">
           <img 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLBPNKdy6jjymTnJ06zYYYstSylSA4WnjJhIgjkQ-CyhE-bOl_H3R3uKpfrEkj7cM41ixRvPPGHdhQjQrjLZsFJF2t3umwE5-6UIfWuWdYssng6OCy7F0ApK_KdYMmIqRI7M47yJR7UEEvzC8EhBSWpj22HAYAKv5X_WlK3NqgSv4NqurEz3UK91Mcec3mIsEPycVbeZ5qbaADAvQYLuEQih9PUfjJIs29nRFRaQHetnHkqZ0c9cdRg6UetTgEYSpolROOp7rRzCgB" 
-            alt="Setup minimalista de escritorio con código en monitor" 
+            src="/profile.webp" 
+            alt="Fotografía de Eduardo Bachmann" 
             loading="lazy"
           />
           <div class="about-hero__image-fade"></div>
@@ -226,7 +226,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .about-hero__image-wrap {
-    background-color: var(--color-surface-container-low);
     border-radius: var(--radius-xl);
     min-height: 400px;
     overflow: hidden;
@@ -239,9 +238,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.8;
-    mix-blend-mode: multiply;
-    filter: grayscale(100%) contrast(1.25);
     transition: transform var(--transition-glacial);
   }
 
@@ -252,7 +248,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .about-hero__image-fade {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, var(--color-surface-container-low), transparent);
     opacity: 0.6;
   }
 
