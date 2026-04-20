@@ -1,0 +1,281 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Eduardo Bachmann — Full Stack Developer. Building scalable digital systems with enduring architecture.' } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="author" content="Eduardo Bachmann" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <title>{title}</title>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="main-nav">
+    <div class="navbar__inner container">
+      <a href="/" class="navbar__brand">EDUARDO BACHMANN</a>
+      <div class="navbar__links">
+        <a href="/" class:list={["navbar__link", { "navbar__link--active": currentPath === "/" }]}>Home</a>
+        <a href="/proyectos" class:list={["navbar__link", { "navbar__link--active": currentPath === "/proyectos" || currentPath === "/proyectos/" }]}>Proyectos</a>
+        <a href="/sobre-mi" class:list={["navbar__link", { "navbar__link--active": currentPath === "/sobre-mi" || currentPath === "/sobre-mi/" }]}>Sobre Mí</a>
+        <a href="/contacto" class:list={["navbar__link", { "navbar__link--active": currentPath === "/contacto" || currentPath === "/contacto/" }]}>Contacto</a>
+      </div>
+      <a href="/contacto" class="btn btn-primary navbar__cta">Contáctame</a>
+      <button class="navbar__toggle" id="mobile-toggle" aria-label="Abrir menú">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div class="navbar__mobile" id="mobile-menu">
+      <a href="/" class="navbar__mobile-link">Home</a>
+      <a href="/proyectos" class="navbar__mobile-link">Proyectos</a>
+      <a href="/sobre-mi" class="navbar__mobile-link">Sobre Mí</a>
+      <a href="/contacto" class="navbar__mobile-link">Contacto</a>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner container">
+      <div class="footer__brand">EDUARDO BACHMANN</div>
+      <div class="footer__links">
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer__link">LinkedIn</a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer__link">GitHub</a>
+        <a href="mailto:hello@eduardobachmann.dev" class="footer__link">Email</a>
+      </div>
+      <div class="footer__copy">
+        © {new Date().getFullYear()} Eduardo Bachmann. Diseñado para perdurar.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('navbar__mobile--open');
+        const icon = toggle.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.textContent = menu.classList.contains('navbar__mobile--open') ? 'close' : 'menu';
+        }
+      });
+    }
+
+    // Navbar scroll effect
+    const nav = document.getElementById('main-nav');
+    if (nav) {
+      window.addEventListener('scroll', () => {
+        nav.classList.toggle('navbar--scrolled', window.scrollY > 20);
+      });
+    }
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in-up');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.observe-animate').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
+
+<style>
+  /* ── Navbar ── */
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+    background-color: rgba(245, 238, 220, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: box-shadow var(--transition-normal);
+  }
+
+  .navbar--scrolled {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .navbar__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--nav-height);
+  }
+
+  .navbar__brand {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.03em;
+    color: var(--color-primary);
+  }
+
+  .navbar__links {
+    display: none;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 768px) {
+    .navbar__links {
+      display: flex;
+    }
+  }
+
+  .navbar__link {
+    font-size: 0.875rem;
+    letter-spacing: -0.01em;
+    color: rgba(23, 49, 36, 0.55);
+    transition: color var(--transition-normal);
+    padding-bottom: 0.25rem;
+  }
+
+  .navbar__link:hover {
+    color: var(--color-primary);
+  }
+
+  .navbar__link--active {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+    border-bottom: 2px solid var(--color-primary);
+  }
+
+  .navbar__cta {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .navbar__cta {
+      display: inline-flex;
+    }
+  }
+
+  .navbar__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    padding: var(--space-sm);
+  }
+
+  @media (min-width: 768px) {
+    .navbar__toggle {
+      display: none;
+    }
+  }
+
+  /* ── Mobile Menu ── */
+  .navbar__mobile {
+    display: none;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg) var(--space-lg);
+    background-color: rgba(245, 238, 220, 0.98);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--color-outline-variant);
+  }
+
+  .navbar__mobile--open {
+    display: flex;
+    animation: slideDown 0.3s ease-out both;
+  }
+
+  @media (min-width: 768px) {
+    .navbar__mobile {
+      display: none !important;
+    }
+  }
+
+  .navbar__mobile-link {
+    padding: var(--space-sm) var(--space-md);
+    font-size: 1rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary);
+    border-radius: var(--radius-md);
+    transition: background-color var(--transition-fast);
+  }
+
+  .navbar__mobile-link:hover {
+    background-color: var(--color-surface-container-low);
+  }
+
+  /* ── Main Content ── */
+  .main-content {
+    flex-grow: 1;
+    padding-top: var(--nav-height);
+  }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top: var(--space-4xl);
+    border-top: 1px solid rgba(23, 49, 36, 0.08);
+    padding: var(--space-3xl) 0;
+    background-color: var(--color-background);
+  }
+
+  .footer__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .footer__inner {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
+
+  .footer__brand {
+    font-size: 1rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+  }
+
+  .footer__links {
+    display: flex;
+    gap: var(--space-lg);
+  }
+
+  .footer__link {
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(23, 49, 36, 0.45);
+    transition: color var(--transition-normal);
+  }
+
+  .footer__link:hover {
+    color: var(--color-primary);
+  }
+
+  .footer__copy {
+    font-size: 0.75rem;
+    color: var(--color-on-surface-variant);
+  }
+</style>
