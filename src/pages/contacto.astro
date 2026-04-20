@@ -1,0 +1,472 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contacto — Eduardo Bachmann" description="Escríbeme para discutir oportunidades, colaboraciones o simplemente para saludar.">
+  <section class="contact container">
+    <!-- Header -->
+    <div class="contact__header observe-animate">
+      <h1 class="contact__title">Construyamos algo que perdure.</h1>
+      <p class="contact__subtitle">
+        Escríbeme para discutir oportunidades, colaboraciones o simplemente para saludar. Actualmente disponible para nuevos proyectos.
+      </p>
+    </div>
+
+    <!-- Bento Grid -->
+    <div class="contact-grid">
+
+      <!-- Contact Form -->
+      <div class="contact-card contact-card--form observe-animate delay-1">
+        <h2 class="contact-card__heading">
+          <span class="material-symbols-outlined">mail</span>
+          Mensaje Directo
+        </h2>
+        <form class="contact-form" id="contact-form">
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <label class="form-label" for="contact-name">Nombre</label>
+              <input class="form-input" id="contact-name" type="text" placeholder="Tu nombre" required />
+            </div>
+            <div class="contact-form__field">
+              <label class="form-label" for="contact-email">Email</label>
+              <input class="form-input" id="contact-email" type="email" placeholder="tu@email.com" required />
+            </div>
+          </div>
+          <div class="contact-form__field">
+            <label class="form-label" for="contact-message">Mensaje</label>
+            <textarea class="form-textarea" id="contact-message" placeholder="¿En qué puedo ayudarte?" rows="5" required></textarea>
+          </div>
+          <div class="contact-form__submit">
+            <button type="submit" class="btn btn-primary btn-lg" id="submit-btn">
+              Enviar Mensaje
+              <span class="material-symbols-outlined" style="font-size: 18px;">send</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Email Card -->
+      <a href="mailto:hello@eduardobachmann.dev" class="contact-card contact-card--email observe-animate delay-2">
+        <span class="material-symbols-outlined contact-card__email-icon" style="font-size: 2.5rem; font-variation-settings: 'FILL' 1;">alternate_email</span>
+        <h3 class="contact-card__email-title">hello@eduardobachmann.dev</h3>
+        <p class="contact-card__email-sub">La forma más rápida de contactarme</p>
+      </a>
+
+      <!-- Featured Insight -->
+      <div class="contact-card contact-card--insight observe-animate delay-3">
+        <div class="contact-card__insight-header">
+          <div class="contact-card__insight-badge">
+            <span class="material-symbols-outlined" style="font-size: 14px;">trending_up</span>
+            <span>INSIGHT DESTACADO</span>
+          </div>
+          <a href="#" class="contact-card__insight-link" aria-label="Ver artículo">
+            <span class="material-symbols-outlined">open_in_new</span>
+          </a>
+        </div>
+        <p class="contact-card__insight-quote">
+          "La arquitectura de las aplicaciones web modernas requiere un balance entre rendimiento bruto y una estructura de código mantenible..."
+        </p>
+        <div class="contact-card__insight-stats">
+          <span><span class="material-symbols-outlined" style="font-size: 14px;">thumb_up</span> 1.2k</span>
+          <span><span class="material-symbols-outlined" style="font-size: 14px;">comment</span> 84</span>
+        </div>
+      </div>
+
+      <!-- Timezone Card -->
+      <div class="contact-card contact-card--timezone observe-animate delay-4">
+        <div class="contact-card__tz-content">
+          <div class="contact-card__tz-icon-wrap">
+            <span class="material-symbols-outlined">schedule</span>
+          </div>
+          <div>
+            <h3 class="contact-card__tz-label">Hora Local</h3>
+            <p class="contact-card__tz-time" id="contact-time">--:--</p>
+            <p class="contact-card__tz-zone">Chile (CLT) • Disponible remoto</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Links -->
+      <div class="contact-card contact-card--social observe-animate delay-5">
+        <h3 class="contact-card__social-title">Conecta en Otros Lugares</h3>
+        <div class="contact-card__social-links">
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">
+            <span class="material-symbols-outlined">link</span> LinkedIn
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link">
+            <span class="material-symbols-outlined">code</span> GitHub
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link">
+            <span class="material-symbols-outlined">forum</span> Twitter
+          </a>
+          <a href="#" class="social-link">
+            <span class="material-symbols-outlined">description</span> Resume
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  function updateContactTime() {
+    const el = document.getElementById('contact-time');
+    if (el) {
+      const now = new Date();
+      el.textContent = now.toLocaleTimeString('es-CL', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true,
+        timeZone: 'America/Santiago'
+      });
+    }
+  }
+  updateContactTime();
+  setInterval(updateContactTime, 30000);
+
+  // Simple form interaction
+  const form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      if (btn) {
+        btn.textContent = '✓ Mensaje Enviado';
+        btn.style.backgroundColor = 'var(--color-primary-container)';
+        btn.style.color = 'var(--color-on-primary-container)';
+        setTimeout(() => {
+          btn.innerHTML = 'Enviar Mensaje <span class="material-symbols-outlined" style="font-size: 18px;">send</span>';
+          btn.style.backgroundColor = '';
+          btn.style.color = '';
+          form.reset();
+        }, 2500);
+      }
+    });
+  }
+</script>
+
+<style>
+  .contact {
+    padding-block: var(--space-3xl) var(--space-4xl);
+  }
+
+  .contact__header {
+    margin-bottom: var(--space-2xl);
+    opacity: 0;
+  }
+
+  .contact__title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-md);
+  }
+
+  .contact__subtitle {
+    font-size: 1.125rem;
+    color: var(--color-secondary);
+    max-width: 36rem;
+    line-height: 1.6;
+  }
+
+  /* ── Contact Grid ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    grid-auto-rows: minmax(200px, auto);
+  }
+
+  @media (min-width: 768px) {
+    .contact-grid {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  /* ── Base Card ── */
+  .contact-card {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    opacity: 0;
+  }
+
+  /* ── Form Card ── */
+  .contact-card--form {
+    background-color: var(--color-surface-container-lowest);
+    padding: var(--space-xl);
+    border: 1px solid var(--color-outline-variant);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 768px) {
+    .contact-card--form {
+      grid-column: span 8;
+      grid-row: span 2;
+    }
+  }
+
+  .contact-card__heading {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--space-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .contact-form__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  @media (min-width: 768px) {
+    .contact-form__row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .contact-form__field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-form__submit {
+    padding-top: var(--space-sm);
+  }
+
+  @media (max-width: 767px) {
+    .contact-form__submit .btn {
+      width: 100%;
+    }
+  }
+
+  /* ── Email Card ── */
+  .contact-card--email {
+    background-color: var(--color-primary-container);
+    padding: var(--space-lg);
+    border: 1px solid rgba(176, 205, 187, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color var(--transition-normal);
+  }
+
+  .contact-card--email:hover {
+    background-color: var(--color-primary);
+  }
+
+  @media (min-width: 768px) {
+    .contact-card--email {
+      grid-column: span 4;
+      grid-row: span 1;
+    }
+  }
+
+  .contact-card__email-icon {
+    color: var(--color-on-primary-container);
+    margin-bottom: var(--space-md);
+    transition: color var(--transition-normal);
+  }
+
+  .contact-card--email:hover .contact-card__email-icon {
+    color: var(--color-on-primary);
+  }
+
+  .contact-card__email-title {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-on-primary-container);
+    transition: color var(--transition-normal);
+  }
+
+  .contact-card--email:hover .contact-card__email-title {
+    color: var(--color-on-primary);
+  }
+
+  .contact-card__email-sub {
+    font-size: 0.875rem;
+    color: rgba(152, 181, 163, 0.8);
+    margin-top: var(--space-sm);
+    transition: color var(--transition-normal);
+  }
+
+  .contact-card--email:hover .contact-card__email-sub {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* ── Insight Card ── */
+  .contact-card--insight {
+    background-color: var(--color-surface-container-highest);
+    padding: var(--space-lg);
+    border: 1px solid var(--color-outline-variant);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 768px) {
+    .contact-card--insight {
+      grid-column: span 4;
+      grid-row: span 1;
+    }
+  }
+
+  .contact-card__insight-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-md);
+  }
+
+  .contact-card__insight-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    color: var(--color-secondary);
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .contact-card__insight-link {
+    color: var(--color-primary);
+    transition: color var(--transition-normal);
+  }
+
+  .contact-card__insight-link:hover {
+    color: var(--color-primary-container);
+  }
+
+  .contact-card__insight-quote {
+    font-size: 0.875rem;
+    color: var(--color-on-surface-variant);
+    font-style: italic;
+    margin-bottom: var(--space-md);
+    line-height: 1.6;
+  }
+
+  .contact-card__insight-stats {
+    display: flex;
+    gap: var(--space-md);
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+  }
+
+  .contact-card__insight-stats span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  /* ── Timezone Card ── */
+  .contact-card--timezone {
+    background-color: var(--color-primary);
+    padding: var(--space-lg);
+    border: 1px solid var(--color-primary-container);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    .contact-card--timezone {
+      grid-column: span 4;
+      grid-row: span 1;
+    }
+  }
+
+  .contact-card__tz-content {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .contact-card__tz-icon-wrap {
+    background-color: var(--color-primary-container);
+    padding: 0.75rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(176, 205, 187, 0.2);
+    color: var(--color-on-primary);
+  }
+
+  .contact-card__tz-label {
+    font-weight: var(--font-weight-bold);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .contact-card__tz-time {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-on-primary);
+    margin-top: 0.25rem;
+  }
+
+  .contact-card__tz-zone {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 0.25rem;
+  }
+
+  /* ── Social Links Card ── */
+  .contact-card--social {
+    background-color: var(--color-surface-container-lowest);
+    padding: var(--space-lg);
+    border: 1px solid var(--color-outline-variant);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    .contact-card--social {
+      grid-column: span 8;
+      grid-row: span 1;
+    }
+  }
+
+  .contact-card__social-title {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-on-surface);
+    margin-bottom: var(--space-md);
+  }
+
+  .contact-card__social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline-variant);
+    font-size: 0.875rem;
+    color: var(--color-on-surface);
+    transition: background-color var(--transition-normal);
+  }
+
+  .social-link:hover {
+    background-color: var(--color-surface-variant);
+  }
+</style>

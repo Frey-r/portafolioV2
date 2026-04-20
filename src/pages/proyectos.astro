@@ -1,0 +1,470 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = [
+  {
+    title: 'Arbor Analytics Platform',
+    description: 'Dashboard de analítica empresarial procesando millones de filas de datos en tiempo real. Construido con un motor WebGL personalizado para visualización de datasets espaciales masivos.',
+    tags: ['React', 'Node.js', 'PostgreSQL', 'WebGL'],
+    featured: true,
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBKllIkAaxJnHnxLe5Ops5VXUX7NtVbBlzwGxPzPM_juu7mUAlc7dj7Vw3nfL4xPY9a4EcX6QRCWqOFPOD9aiFCFyYBeTfN7qS84E8HeIV4nY7yScANdsJrpySEri9bqXsvns0BzxidUZNfFkR7I0I_Jd9KxhbJxsGuvFinQdVIUgbEz6li0QAC3FZmmXarmVUotbgaiNseQSxvp58Eor_MtoA5U0Ko9PUHU3N0ziNmm31BDCgytVVkfy8nAi8EjT82W8t8Ji2WLtcX',
+    imageAlt: 'Dashboard de visualización de datos',
+    links: { demo: '#', source: '#' }
+  },
+  {
+    title: 'Hearth Tasker',
+    description: 'Herramienta de gestión de proyectos colaborativa diseñada para equipos de diseño remoto, con sincronización de planos en tiempo real.',
+    tags: ['Vue.js', 'Firebase'],
+    links: { demo: '#', source: '#' }
+  },
+  {
+    title: 'Evergreen Commerce',
+    description: 'Storefront headless de e-commerce con cargas estáticas ultra-rápidas, integración de pagos y CMS a medida.',
+    tags: ['Next.js', 'Stripe'],
+    accent: true,
+    links: { demo: '#', source: '#' }
+  },
+  {
+    title: 'Flora Cache API',
+    description: 'Microservicio de caché de alto rendimiento construido para servir millones de peticiones por minuto con latencia sub-milisegundo.',
+    tags: ['Python', 'FastAPI', 'Redis'],
+    wide: true,
+    links: { docs: '#', source: '#' }
+  },
+  {
+    title: 'Moss UI Library',
+    description: 'Librería de componentes accesibles y sin estilos, enfocada en navegación por teclado y cumplimiento ARIA estricto.',
+    tags: ['SvelteKit', 'CSS'],
+    links: { demo: '#', source: '#' }
+  }
+];
+---
+
+<BaseLayout title="Proyectos — Eduardo Bachmann" description="Colección curada de aplicaciones full-stack enfocadas en arquitectura escalable e interfaces intuitivas.">
+  <section class="projects container">
+    <!-- Header -->
+    <div class="projects__header observe-animate">
+      <h1 class="projects__title">Trabajos Seleccionados</h1>
+      <p class="projects__subtitle">
+        Una colección curada de aplicaciones full-stack enfocadas en arquitectura escalable, interfaces intuitivas y rendimiento robusto.
+      </p>
+    </div>
+
+    <!-- Bento Grid -->
+    <div class="projects-grid">
+
+      {/* Featured Project */}
+      <article class="project-card project-card--featured observe-animate delay-1">
+        <div class="project-card__image">
+          <img 
+            src={projects[0].image} 
+            alt={projects[0].imageAlt} 
+            loading="lazy" 
+          />
+          <div class="project-card__image-fade"></div>
+        </div>
+        <div class="project-card__body">
+          <div class="project-card__tags">
+            {projects[0].tags.map(tag => <span class="tag">{tag}</span>)}
+          </div>
+          <h2 class="project-card__title project-card__title--lg">{projects[0].title}</h2>
+          <p class="project-card__desc">{projects[0].description}</p>
+          <div class="project-card__links">
+            <a href={projects[0].links.demo} class="btn btn-primary">
+              <span>Live Demo</span>
+              <span class="material-symbols-outlined" style="font-size: 18px;">open_in_new</span>
+            </a>
+            <a href={projects[0].links.source} class="project-card__source-link">
+              <span>Source Code</span>
+              <span class="material-symbols-outlined" style="font-size: 18px;">code</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      {/* Standard Project 1 */}
+      <article class="project-card project-card--standard observe-animate delay-2">
+        <div class="project-card__tags">
+          {projects[1].tags.map(tag => <span class="tag">{tag}</span>)}
+        </div>
+        <h3 class="project-card__title">{projects[1].title}</h3>
+        <p class="project-card__desc project-card__desc--clamp">{projects[1].description}</p>
+        <div class="project-card__icon-links">
+          <a href={projects[1].links.demo} aria-label="Demo" class="icon-btn">
+            <span class="material-symbols-outlined" style="font-size: 20px;">link</span>
+          </a>
+          <a href={projects[1].links.source} aria-label="GitHub" class="icon-btn">
+            <span class="material-symbols-outlined" style="font-size: 20px;">code</span>
+          </a>
+        </div>
+      </article>
+
+      {/* Accent Project */}
+      <article class="project-card project-card--accent observe-animate delay-3">
+        <div class="project-card__accent-blur"></div>
+        <div class="project-card__accent-inner">
+          <div class="project-card__tags project-card__tags--light">
+            {projects[2].tags.map(tag => <span class="tag tag--light">{tag}</span>)}
+          </div>
+          <h3 class="project-card__title">{projects[2].title}</h3>
+          <p class="project-card__desc project-card__desc--clamp">{projects[2].description}</p>
+        </div>
+        <div class="project-card__icon-links project-card__icon-links--accent">
+          <a href={projects[2].links.demo} aria-label="Demo" class="icon-btn icon-btn--accent">
+            <span class="material-symbols-outlined" style="font-size: 20px;">open_in_new</span>
+          </a>
+          <a href={projects[2].links.source} aria-label="GitHub" class="icon-btn icon-btn--accent">
+            <span class="material-symbols-outlined" style="font-size: 20px;">code</span>
+          </a>
+        </div>
+      </article>
+
+      {/* Wide Project */}
+      <article class="project-card project-card--wide observe-animate delay-4">
+        <div class="project-card__wide-content">
+          <div class="project-card__tags">
+            {projects[3].tags.map(tag => <span class="tag">{tag}</span>)}
+          </div>
+          <h3 class="project-card__title project-card__title--md">{projects[3].title}</h3>
+          <p class="project-card__desc">{projects[3].description}</p>
+        </div>
+        <div class="project-card__wide-actions">
+          <a href={projects[3].links.docs} class="btn btn-secondary">
+            <span class="material-symbols-outlined" style="font-size: 18px;">menu_book</span>
+            <span>Docs</span>
+          </a>
+          <a href={projects[3].links.source} class="btn btn-secondary">
+            <span class="material-symbols-outlined" style="font-size: 18px;">code</span>
+            <span>Source</span>
+          </a>
+        </div>
+      </article>
+
+      {/* Standard Project 2 */}
+      <article class="project-card project-card--standard observe-animate delay-5">
+        <div class="project-card__tags">
+          {projects[4].tags.map(tag => <span class="tag">{tag}</span>)}
+        </div>
+        <h3 class="project-card__title">{projects[4].title}</h3>
+        <p class="project-card__desc project-card__desc--clamp">{projects[4].description}</p>
+        <div class="project-card__icon-links">
+          <a href={projects[4].links.demo} aria-label="Demo" class="project-card__text-link">
+            <span class="material-symbols-outlined">link</span>
+          </a>
+          <a href={projects[4].links.source} aria-label="GitHub" class="project-card__text-link">
+            <span class="material-symbols-outlined">code</span>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .projects {
+    padding-block: var(--space-3xl) var(--space-4xl);
+  }
+
+  .projects__header {
+    margin-bottom: var(--space-2xl);
+    max-width: 48rem;
+    opacity: 0;
+  }
+
+  .projects__title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-md);
+  }
+
+  .projects__subtitle {
+    font-size: 1.125rem;
+    color: var(--color-on-surface-variant);
+    line-height: 1.6;
+  }
+
+  /* ── Projects Grid ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    grid-auto-rows: 300px;
+  }
+
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* ── Base Card ── */
+  .project-card {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    position: relative;
+    opacity: 0;
+  }
+
+  /* ── Featured Card ── */
+  .project-card--featured {
+    background-color: var(--color-surface-container);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(194, 200, 194, 0.4);
+    box-shadow: var(--shadow-sm);
+  }
+
+  @media (min-width: 768px) {
+    .project-card--featured {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+  }
+
+  .project-card__image {
+    height: 45%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid rgba(194, 200, 194, 0.3);
+  }
+
+  .project-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-glacial);
+  }
+
+  .project-card--featured:hover .project-card__image img {
+    transform: scale(1.05);
+  }
+
+  .project-card__image-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(231, 222, 202, 0.8), transparent);
+  }
+
+  .project-card__body {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .project-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  .project-card__title {
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-on-surface);
+    letter-spacing: -0.01em;
+    margin-bottom: var(--space-sm);
+    transition: color var(--transition-normal);
+  }
+
+  .project-card__title--lg {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .project-card__title--md {
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .project-card__desc {
+    font-size: 0.9375rem;
+    color: var(--color-on-surface-variant);
+    line-height: 1.6;
+  }
+
+  .project-card__desc--clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .project-card__links {
+    display: flex;
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+    align-items: center;
+  }
+
+  .project-card__source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--color-on-surface-variant);
+    font-weight: var(--font-weight-bold);
+    font-size: 0.875rem;
+    transition: color var(--transition-normal);
+  }
+
+  .project-card__source-link:hover {
+    color: var(--color-primary);
+  }
+
+  /* ── Standard Cards ── */
+  .project-card--standard {
+    background-color: var(--color-surface-container-low);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgba(194, 200, 194, 0.4);
+    transition: background-color var(--transition-normal);
+  }
+
+  .project-card--standard:hover {
+    background-color: var(--color-surface-container);
+  }
+
+  .project-card--standard:hover .project-card__title {
+    color: var(--color-primary);
+  }
+
+  .project-card__icon-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: var(--space-md);
+  }
+
+  .icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: var(--color-surface);
+    color: var(--color-on-surface-variant);
+    border: 1px solid rgba(194, 200, 194, 0.3);
+    transition: all var(--transition-normal);
+  }
+
+  .icon-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+
+  /* ── Accent Card ── */
+  .project-card--accent {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgba(23, 49, 36, 0.2);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .project-card__accent-blur {
+    position: absolute;
+    right: -3rem;
+    top: -3rem;
+    width: 10rem;
+    height: 10rem;
+    background-color: var(--color-primary);
+    opacity: 0.1;
+    border-radius: 50%;
+    filter: blur(2rem);
+  }
+
+  .project-card__accent-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .tag--light {
+    background-color: var(--color-surface-bright);
+    color: var(--color-primary);
+  }
+
+  .icon-btn--accent {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    border: none;
+  }
+
+  .icon-btn--accent:hover {
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+  }
+
+  .project-card__icon-links--accent {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Wide Card ── */
+  .project-card--wide {
+    background-color: var(--color-surface-variant);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    align-items: flex-start;
+    border: 1px solid rgba(194, 200, 194, 0.3);
+    transition: border-color var(--transition-normal);
+  }
+
+  @media (min-width: 768px) {
+    .project-card--wide {
+      grid-column: span 2;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .project-card--wide:hover {
+    border-color: var(--color-outline-variant);
+  }
+
+  .project-card--wide:hover .project-card__title {
+    color: var(--color-primary);
+  }
+
+  .project-card__wide-content {
+    flex: 1;
+  }
+
+  .project-card__wide-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 768px) {
+    .project-card__wide-actions {
+      flex-direction: column;
+    }
+  }
+
+  /* ── Text Links ── */
+  .project-card__text-link {
+    color: var(--color-on-surface-variant);
+    padding: var(--space-sm);
+    transition: color var(--transition-normal);
+  }
+
+  .project-card__text-link:hover {
+    color: var(--color-primary);
+  }
+</style>

@@ -1,0 +1,472 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Sobre Mí — Eduardo Bachmann" description="Autodidacta. Impulsado por la curiosidad. Desarrollador full-stack enfocado en arquitectura escalable.">
+  <div class="about container">
+
+    <!-- Hero Section -->
+    <section class="about-hero observe-animate">
+      <div class="about-hero__text">
+        <h1 class="about-hero__heading">
+          Autodidacta.<br/>
+          Impulsado por la curiosidad.
+        </h1>
+        <p class="about-hero__desc">
+          Construyo aplicaciones full-stack con enfoque en arquitectura escalable e interfaces limpias. Mi camino no fue tradicional; se forjó a través de noches largas, lectura de documentación y una obsesión por resolver problemas complejos desde cero.
+        </p>
+        <div class="about-hero__cta">
+          <a href="/contacto" class="btn btn-primary btn-lg">Hablemos</a>
+        </div>
+      </div>
+      <div class="about-hero__image">
+        <div class="about-hero__image-wrap">
+          <img 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLBPNKdy6jjymTnJ06zYYYstSylSA4WnjJhIgjkQ-CyhE-bOl_H3R3uKpfrEkj7cM41ixRvPPGHdhQjQrjLZsFJF2t3umwE5-6UIfWuWdYssng6OCy7F0ApK_KdYMmIqRI7M47yJR7UEEvzC8EhBSWpj22HAYAKv5X_WlK3NqgSv4NqurEz3UK91Mcec3mIsEPycVbeZ5qbaADAvQYLuEQih9PUfjJIs29nRFRaQHetnHkqZ0c9cdRg6UetTgEYSpolROOp7rRzCgB" 
+            alt="Setup minimalista de escritorio con código en monitor" 
+            loading="lazy"
+          />
+          <div class="about-hero__image-fade"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Journey (Bento Grid) -->
+    <section class="journey observe-animate delay-2">
+      <div class="section-header">
+        <h2 class="section-header__title">El Camino</h2>
+        <p class="section-header__desc">Una ruta no lineal enfocada en la aplicación práctica, inmersiones profundas en documentación y construcción continua.</p>
+      </div>
+      <div class="journey-grid">
+        <!-- Philosophy -->
+        <div class="journey-card journey-card--wide">
+          <div class="journey-card__icon">
+            <span class="material-symbols-outlined" style="font-size: 2rem;">menu_book</span>
+          </div>
+          <h3 class="journey-card__title">Aprendizaje Autodirigido</h3>
+          <p class="journey-card__desc">
+            Cambiando el salón de clases por la terminal. Mi currículo se construyó sobre documentación open-source, cursos online rigurosos y desarmando sistemas existentes para entender cómo funcionan. Aprendí a aprender, que es la habilidad más valiosa en una industria que cambia a diario.
+          </p>
+        </div>
+        <!-- Milestones -->
+        <div class="journey-card journey-card--milestones">
+          <h3 class="journey-card__label">HITOS CLAVE</h3>
+          <ul class="milestone-list">
+            <li class="milestone-item">
+              <span class="material-symbols-outlined milestone-icon">verified</span>
+              <div>
+                <p class="milestone-item__title">AWS Solutions Architect</p>
+                <p class="milestone-item__sub">Infraestructura Cloud</p>
+              </div>
+            </li>
+            <li class="milestone-item">
+              <span class="material-symbols-outlined milestone-icon">verified</span>
+              <div>
+                <p class="milestone-item__title">Full-Stack Meta Cert</p>
+                <p class="milestone-item__sub">React & Node.js</p>
+              </div>
+            </li>
+            <li class="milestone-item">
+              <span class="material-symbols-outlined milestone-icon">code</span>
+              <div>
+                <p class="milestone-item__title">100+ Repos en GitHub</p>
+                <p class="milestone-item__sub">Contribuciones Open Source</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience observe-animate delay-3">
+      <div class="section-header">
+        <h2 class="section-header__title">Experiencia</h2>
+        <p class="section-header__desc">Entregando aplicaciones de nivel producción como consultor independiente y team lead.</p>
+      </div>
+      <div class="experience-list">
+        <div class="experience-card">
+          <div class="experience-card__header">
+            <div>
+              <h3 class="experience-card__title">Senior Full Stack Developer (Freelance)</h3>
+              <p class="experience-card__company">Estudio Independiente</p>
+            </div>
+            <span class="experience-card__period">2021 — Presente</span>
+          </div>
+          <p class="experience-card__desc">
+            Arquitectura y desarrollo de soluciones e-commerce personalizadas y herramientas internas para clientes retail. Migración de backends legacy PHP a microservicios Node.js modernos, mejorando tiempos de respuesta API en un 40%. Implementación de pipelines CI/CD con GitHub Actions.
+          </p>
+        </div>
+        <div class="experience-card">
+          <div class="experience-card__header">
+            <div>
+              <h3 class="experience-card__title">Frontend Developer</h3>
+              <p class="experience-card__company">TechNova Solutions</p>
+            </div>
+            <span class="experience-card__period">2019 — 2021</span>
+          </div>
+          <p class="experience-card__desc">
+            Lideré la transición de JavaScript vanilla a React para un producto SaaS core. Desarrollé una librería de componentes completa siguiendo el nuevo design system de la empresa, resultando en rollouts más rápidos de funcionalidades.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Philosophy -->
+    <section class="philosophy observe-animate delay-4">
+      <div class="section-header">
+        <h2 class="section-header__title">Filosofía Core</h2>
+        <p class="section-header__desc">Principios que guían mi código y mis decisiones de arquitectura.</p>
+      </div>
+      <div class="philosophy-grid">
+        <div class="philosophy-card">
+          <div class="philosophy-card__icon">
+            <span class="material-symbols-outlined">architecture</span>
+          </div>
+          <h3 class="philosophy-card__title">Arquitectura Escalable</h3>
+          <p class="philosophy-card__desc">Construyendo sistemas que anticipan el crecimiento sin sobre-ingeniería desde el día uno.</p>
+        </div>
+        <div class="philosophy-card">
+          <div class="philosophy-card__icon">
+            <span class="material-symbols-outlined">bug_report</span>
+          </div>
+          <h3 class="philosophy-card__title">Mantenibilidad</h3>
+          <p class="philosophy-card__desc">Escribiendo código para el siguiente desarrollador. Documentación clara, tipado estricto y testing exhaustivo.</p>
+        </div>
+        <div class="philosophy-card">
+          <div class="philosophy-card__icon">
+            <span class="material-symbols-outlined">speed</span>
+          </div>
+          <h3 class="philosophy-card__title">Rendimiento</h3>
+          <p class="philosophy-card__desc">Optimizando velocidad y eficiencia. Minimizando bundles y reduciendo queries a la base de datos.</p>
+        </div>
+        <div class="philosophy-card">
+          <div class="philosophy-card__icon">
+            <span class="material-symbols-outlined">design_services</span>
+          </div>
+          <h3 class="philosophy-card__title">UI / UX Focus</h3>
+          <p class="philosophy-card__desc">Cerrando la brecha entre diseño e implementación técnica para una ejecución impecable.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .about {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4xl);
+    padding-block: var(--space-3xl) var(--space-4xl);
+  }
+
+  /* ── Section Header ── */
+  .section-header {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .section-header__title {
+    font-size: 1.75rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .section-header__desc {
+    color: var(--color-on-surface-variant);
+    max-width: 36rem;
+    line-height: 1.6;
+  }
+
+  /* ── Hero Section ── */
+  .about-hero {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+    align-items: center;
+    opacity: 0;
+  }
+
+  @media (min-width: 768px) {
+    .about-hero {
+      flex-direction: row;
+    }
+  }
+
+  .about-hero__text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .about-hero__heading {
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-primary);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .about-hero__desc {
+    font-size: 1.125rem;
+    color: var(--color-on-surface-variant);
+    line-height: 1.6;
+    max-width: 36rem;
+  }
+
+  .about-hero__cta {
+    padding-top: var(--space-md);
+  }
+
+  .about-hero__image {
+    flex: 1;
+    width: 100%;
+  }
+
+  .about-hero__image-wrap {
+    background-color: var(--color-surface-container-low);
+    border-radius: var(--radius-xl);
+    min-height: 400px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .about-hero__image-wrap img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    mix-blend-mode: multiply;
+    filter: grayscale(100%) contrast(1.25);
+    transition: transform var(--transition-glacial);
+  }
+
+  .about-hero__image-wrap:hover img {
+    transform: scale(1.05);
+  }
+
+  .about-hero__image-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--color-surface-container-low), transparent);
+    opacity: 0.6;
+  }
+
+  /* ── Journey Grid ── */
+  .journey {
+    opacity: 0;
+  }
+
+  .journey-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 768px) {
+    .journey-grid {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  .journey-card {
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+  }
+
+  .journey-card--wide {
+    background-color: var(--color-surface-container-low);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    transition: background-color var(--transition-normal);
+  }
+
+  .journey-card--wide:hover {
+    background-color: var(--color-surface-container-high);
+  }
+
+  .journey-card__icon {
+    color: var(--color-primary);
+    opacity: 0.8;
+    margin-bottom: var(--space-md);
+  }
+
+  .journey-card__title {
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+  }
+
+  .journey-card__desc {
+    color: var(--color-on-surface-variant);
+    line-height: 1.6;
+  }
+
+  .journey-card--milestones {
+    background-color: var(--color-surface-container-lowest);
+    border: 1px solid rgba(194, 200, 194, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .journey-card__label {
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-on-surface-variant);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .milestone-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .milestone-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .milestone-icon {
+    color: var(--color-primary);
+    font-size: 0.875rem;
+    margin-top: 0.125rem;
+  }
+
+  .milestone-item__title {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-on-surface);
+  }
+
+  .milestone-item__sub {
+    font-size: 0.875rem;
+    color: var(--color-on-surface-variant);
+  }
+
+  /* ── Experience ── */
+  .experience {
+    opacity: 0;
+  }
+
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .experience-card {
+    background-color: var(--color-surface-container-low);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    border-left: 4px solid transparent;
+    transition: all var(--transition-normal);
+  }
+
+  .experience-card:hover {
+    background-color: var(--color-surface-container-high);
+    border-left-color: var(--color-primary);
+  }
+
+  .experience-card__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  @media (min-width: 768px) {
+    .experience-card__header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .experience-card__title {
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+  }
+
+  .experience-card__company {
+    color: var(--color-on-surface-variant);
+  }
+
+  .experience-card__period {
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-on-surface-variant);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background-color: var(--color-surface-container);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+    width: fit-content;
+  }
+
+  .experience-card__desc {
+    color: var(--color-on-surface-variant);
+    line-height: 1.6;
+    max-width: 48rem;
+  }
+
+  /* ── Philosophy ── */
+  .philosophy {
+    opacity: 0;
+  }
+
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  @media (min-width: 480px) {
+    .philosophy-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .philosophy-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .philosophy-card {
+    background-color: var(--color-primary);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .philosophy-card__icon {
+    padding: 0.75rem;
+    border-radius: var(--radius-full);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-on-primary);
+  }
+
+  .philosophy-card__title {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-on-primary);
+  }
+
+  .philosophy-card__desc {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+  }
+</style>
