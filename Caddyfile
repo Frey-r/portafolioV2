@@ -1,0 +1,21 @@
+:80 {
+	# Comprimir las respuestas para optimizar la velocidad
+	encode gzip zstd
+
+	# Rutas de la API (Backend Go)
+	handle_path /api/* {
+		# Redirige el tráfico mediante Docker a "backend" en el puerto 8080
+		reverse_proxy backend:8080
+	}
+
+	# Frontend (Astro SSG)
+	handle {
+		root * /srv
+		
+		# Habilitar el servidor de archivos estáticos de Caddy
+		file_server
+		
+		# Fallback normal para Single Page o Static Apps, si algo no existe redirige o busca su versión HTML
+		try_files {path} {path}/index.html /404.html
+	}
+}
