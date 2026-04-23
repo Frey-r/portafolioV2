@@ -54,7 +54,7 @@ const projects = [
     <div class="projects-grid">
 
       {/* Featured Project */}
-      <article class="project-card project-card--featured observe-animate delay-1">
+      <article class="project-card project-card--featured observe-animate delay-1" data-repo={projects[0].links.source.replace('https://github.com/', '')}>
         <div class="project-card__image">
           <img 
             src={projects[0].image} 
@@ -83,7 +83,7 @@ const projects = [
       </article>
 
       {/* Standard Project 1 */}
-      <article class="project-card project-card--standard observe-animate delay-2">
+      <article class="project-card project-card--standard observe-animate delay-2" data-repo={projects[1].links.source.replace('https://github.com/', '')}>
         <div class="project-card__tags">
           {projects[1].tags.map(tag => <span class="tag">{tag}</span>)}
         </div>
@@ -100,7 +100,7 @@ const projects = [
       </article>
 
       {/* Accent Project */}
-      <article class="project-card project-card--accent observe-animate delay-3">
+      <article class="project-card project-card--accent observe-animate delay-3" data-repo={projects[2].links.source.replace('https://github.com/', '')}>
         <div class="project-card__accent-blur"></div>
         <div class="project-card__accent-inner">
           <div class="project-card__tags project-card__tags--light">
@@ -120,7 +120,7 @@ const projects = [
       </article>
 
       {/* Wide Project */}
-      <article class="project-card project-card--wide observe-animate delay-4">
+      <article class="project-card project-card--wide observe-animate delay-4" data-repo={projects[3].links.source.replace('https://github.com/', '')}>
         <div class="project-card__wide-content">
           <div class="project-card__tags">
             {projects[3].tags.map(tag => <span class="tag">{tag}</span>)}
@@ -141,7 +141,7 @@ const projects = [
       </article>
 
       {/* Standard Project 2 */}
-      <article class="project-card project-card--standard observe-animate delay-5">
+      <article class="project-card project-card--standard observe-animate delay-5" data-repo={projects[4].links.source.replace('https://github.com/', '')}>
         <div class="project-card__tags">
           {projects[4].tags.map(tag => <span class="tag">{tag}</span>)}
         </div>
@@ -160,6 +160,35 @@ const projects = [
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  // Marcar el proyecto con el último push de GitHub
+  async function markLatestProject() {
+    try {
+      const res = await fetch('/api/github/last-push');
+      if (!res.ok) return;
+
+      const data = await res.json();
+      const latestRepo = data.repo; // e.g. "Frey-r/portafolio"
+
+      const cards = document.querySelectorAll('[data-repo]');
+      cards.forEach((card) => {
+        const repo = card.getAttribute('data-repo');
+        if (repo === latestRepo) {
+          const badge = document.createElement('div');
+          badge.className = 'latest-push-badge';
+          badge.innerHTML = '<span class="pulse-indicator"></span> Actualizado recientemente';
+          card.prepend(badge);
+          card.classList.add('project-card--latest');
+        }
+      });
+    } catch (e) {
+      console.error('Failed to fetch last push:', e);
+    }
+  }
+
+  markLatestProject();
+</script>
 
 <style>
   .projects {
@@ -460,6 +489,39 @@ const projects = [
     .project-card__wide-actions {
       flex-direction: column;
     }
+  }
+
+  /* ── Latest Push Badge ── */
+  .latest-push-badge {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    padding: 0.25rem 0.625rem;
+    border-radius: var(--radius-full);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .pulse-indicator {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: var(--color-primary-fixed);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .project-card--latest {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
   }
 
   /* ── Text Links ── */
