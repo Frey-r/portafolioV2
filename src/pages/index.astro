@@ -527,8 +527,21 @@ const yearsExp = Math.floor((now.getTime() - startDate.getTime()) / (1000 * 60 *
   @media (min-width: 768px) {
     .bento-cell--stack {
       grid-column: span 2;
-      grid-row: span 2;
     }
+  }
+
+  .bento-cell--stack .stack-grid {
+    gap: var(--space-md);
+  }
+
+  .bento-cell--stack h4 {
+    font-size: 0.9375rem;
+    margin-bottom: 0.125rem;
+  }
+
+  .bento-cell--stack .stack-item p {
+    font-size: 0.8125rem;
+    line-height: 1.4;
   }
 
   .stack-grid {
