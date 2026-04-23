@@ -1,5 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Cálculo dinámico de años de experiencia desde 1 de mayo de 2022
+const startDate = new Date('2022-05-01');
+const now = new Date();
+const yearsExp = Math.floor((now.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
 ---
 
 <BaseLayout title="Eduardo Bachmann — Full Stack Developer">
@@ -12,15 +17,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="bento-cell__content">
           <span class="bento-cell__label">INTRODUCCIÓN</span>
           <h1 class="bento-cell__heading">
-            Construyendo sistemas<br/>digitales escalables.
+            Construyendo sistemas<br/>que piensan y escalan.
           </h1>
           <p class="bento-cell__text">
-            Desarrollador full stack enfocado en arquitectura duradera, código orgánico y plataformas digitales robustas.
+            Desarrollador backend con {yearsExp}+ años de experiencia construyendo microservicios, flujos agenticos con IA y arquitecturas cloud robustas.
           </p>
         </div>
         <div class="bento-cell__actions">
           <a href="/proyectos" class="btn btn-primary btn-lg">Ver Proyectos</a>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">Ver GitHub</a>
+          <a href="https://github.com/Frey-r" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">Ver GitHub</a>
         </div>
       </div>
 
@@ -72,11 +77,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="stack-grid">
           <div class="stack-item">
             <div class="stack-item__icon">
-              <span class="material-symbols-outlined">code</span>
+              <span class="material-symbols-outlined">smart_toy</span>
             </div>
             <div>
-              <h4>Frontend</h4>
-              <p>Aplicaciones web responsivas con frameworks JS modernos.</p>
+              <h4>IA & Agentes</h4>
+              <p>Flujos agenticos, multi-agentes y servidores MCP con Langchain y Langgraph.</p>
             </div>
           </div>
           <div class="stack-item">
@@ -85,7 +90,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
             <div>
               <h4>Backend</h4>
-              <p>Arquitecturas escalables de microservicios.</p>
+              <p>Microservicios en Python (FastAPI) y Go (Gin) para producción.</p>
             </div>
           </div>
           <div class="stack-item">
@@ -94,7 +99,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
             <div>
               <h4>Base de Datos</h4>
-              <p>Diseño de esquemas, optimización y modelado.</p>
+              <p>SQL, NoSQL y bases vectoriales para búsqueda semántica.</p>
             </div>
           </div>
           <div class="stack-item">
@@ -102,8 +107,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <span class="material-symbols-outlined">cloud</span>
             </div>
             <div>
-              <h4>DevOps & Cloud</h4>
-              <p>Contenedores, CI/CD e infraestructura cloud.</p>
+              <h4>AWS & DevOps</h4>
+              <p>EC2, Lambda, SQS, RDS. Contenedores y despliegues automáticos.</p>
             </div>
           </div>
         </div>
@@ -113,13 +118,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="bento-cell bento-cell--toolkit observe-animate delay-5">
         <span class="bento-cell__label">TOOLKIT</span>
         <div class="chip-wrap">
-          <span class="chip">TypeScript</span>
           <span class="chip">Python</span>
-          <span class="chip">React</span>
-          <span class="chip">Node.js</span>
-          <span class="chip">Docker</span>
+          <span class="chip">FastAPI</span>
+          <span class="chip">Go</span>
+          <span class="chip">Langchain</span>
+          <span class="chip">Langgraph</span>
+          <span class="chip">MCPs</span>
+          <span class="chip">Vue</span>
+          <span class="chip">Astro</span>
           <span class="chip">AWS</span>
-          <span class="chip">PostgreSQL</span>
+          <span class="chip">Docker</span>
         </div>
       </div>
 
@@ -519,6 +527,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   @media (min-width: 768px) {
     .bento-cell--stack {
       grid-column: span 2;
+      grid-row: span 2;
     }
   }
 

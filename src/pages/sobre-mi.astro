@@ -1,5 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Cálculo dinámico de años de experiencia desde 1 de mayo de 2022
+const startDate = new Date('2022-05-01');
+const now = new Date();
+const yearsExp = Math.floor((now.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
+const currentYear = now.getFullYear();
 ---
 
 <BaseLayout title="Sobre Mí — Eduardo Bachmann" description="Autodidacta. Impulsado por la curiosidad. Desarrollador full-stack enfocado en arquitectura escalable.">
@@ -13,7 +19,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Impulsado por la curiosidad.
         </h1>
         <p class="about-hero__desc">
-          Construyo aplicaciones full-stack con enfoque en arquitectura escalable e interfaces limpias. Mi camino no fue tradicional; se forjó a través de noches largas, lectura de documentación y una obsesión por resolver problemas complejos desde cero.
+          Desarrollo desde los 16 años. Hoy, con {yearsExp}+ años de experiencia profesional, construyo microservicios backend, arquitecturas cloud en AWS y flujos agenticos con IA. Me nutro constantemente de documentación, cursos y colegas para aportar soluciones de valor en cada proyecto.
         </p>
         <div class="about-hero__cta">
           <a href="/contacto" class="btn btn-primary btn-lg">Hablemos</a>
@@ -35,7 +41,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section class="journey observe-animate delay-2">
       <div class="section-header">
         <h2 class="section-header__title">El Camino</h2>
-        <p class="section-header__desc">Una ruta no lineal enfocada en la aplicación práctica, inmersiones profundas en documentación y construcción continua.</p>
+        <p class="section-header__desc">De QA a backend IA. Una trayectoria enfocada en resolver problemas reales con código que se mantiene en producción.</p>
       </div>
       <div class="journey-grid">
         <!-- Philosophy -->
@@ -45,7 +51,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
           <h3 class="journey-card__title">Aprendizaje Autodirigido</h3>
           <p class="journey-card__desc">
-            Cambiando el salón de clases por la terminal. Mi currículo se construyó sobre documentación open-source, cursos online rigurosos y desarmando sistemas existentes para entender cómo funcionan. Aprendí a aprender, que es la habilidad más valiosa en una industria que cambia a diario.
+            Empecé a programar a los 16 años. Mi camino no fue tradicional: se forjó con documentación, cursos online y desarmando sistemas para entender cómo funcionan. Me adapto con facilidad a entornos cambiantes y disfruto tanto del trabajo en equipo como del desempeño autónomo.
           </p>
         </div>
         <!-- Milestones -->
@@ -53,24 +59,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h3 class="journey-card__label">HITOS CLAVE</h3>
           <ul class="milestone-list">
             <li class="milestone-item">
-              <span class="material-symbols-outlined milestone-icon">verified</span>
+              <span class="material-symbols-outlined milestone-icon">smart_toy</span>
               <div>
-                <p class="milestone-item__title">AWS Solutions Architect</p>
-                <p class="milestone-item__sub">Infraestructura Cloud</p>
+                <p class="milestone-item__title">Flujos Agenticos & MCPs</p>
+                <p class="milestone-item__sub">Backend IA en ZeroQ</p>
+              </div>
+            </li>
+            <li class="milestone-item">
+              <span class="material-symbols-outlined milestone-icon">cloud</span>
+              <div>
+                <p class="milestone-item__title">Sistema de Reportería en AWS</p>
+                <p class="milestone-item__sub">Lambda, SQS, RDS, EC2</p>
               </div>
             </li>
             <li class="milestone-item">
               <span class="material-symbols-outlined milestone-icon">verified</span>
               <div>
-                <p class="milestone-item__title">Full-Stack Meta Cert</p>
-                <p class="milestone-item__sub">React & Node.js</p>
-              </div>
-            </li>
-            <li class="milestone-item">
-              <span class="material-symbols-outlined milestone-icon">code</span>
-              <div>
-                <p class="milestone-item__title">100+ Repos en GitHub</p>
-                <p class="milestone-item__sub">Contribuciones Open Source</p>
+                <p class="milestone-item__title">Microservicios en Producción</p>
+                <p class="milestone-item__sub">Firma digital y autenticación</p>
               </div>
             </li>
           </ul>
@@ -82,31 +88,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section class="experience observe-animate delay-3">
       <div class="section-header">
         <h2 class="section-header__title">Experiencia</h2>
-        <p class="section-header__desc">Entregando aplicaciones de nivel producción como consultor independiente y team lead.</p>
+        <p class="section-header__desc">Desarrollando soluciones en producción para sectores públicos, privados y startups tecnológicas.</p>
       </div>
       <div class="experience-list">
         <div class="experience-card">
           <div class="experience-card__header">
             <div>
-              <h3 class="experience-card__title">Senior Full Stack Developer (Freelance)</h3>
-              <p class="experience-card__company">Estudio Independiente</p>
+              <h3 class="experience-card__title">Backend Developer IA</h3>
+              <p class="experience-card__company">ZeroQ</p>
             </div>
-            <span class="experience-card__period">2021 — Presente</span>
+            <span class="experience-card__period">2025 — Presente</span>
           </div>
           <p class="experience-card__desc">
-            Arquitectura y desarrollo de soluciones e-commerce personalizadas y herramientas internas para clientes retail. Migración de backends legacy PHP a microservicios Node.js modernos, mejorando tiempos de respuesta API en un 40%. Implementación de pipelines CI/CD con GitHub Actions.
+            Creación de flujos de automatización agenticos, multi-agenticos y servidores MCP. Stack: Python (FastAPI, Pandas, SQLAlchemy, Langchain, Langgraph), Go (Gin), AWS y bases de datos relacionales, documentales y vectoriales.
           </p>
         </div>
         <div class="experience-card">
           <div class="experience-card__header">
             <div>
-              <h3 class="experience-card__title">Frontend Developer</h3>
-              <p class="experience-card__company">TechNova Solutions</p>
+              <h3 class="experience-card__title">Desarrollador Backend</h3>
+              <p class="experience-card__company">Idok</p>
             </div>
-            <span class="experience-card__period">2019 — 2021</span>
+            <span class="experience-card__period">2022 — 2025</span>
           </div>
           <p class="experience-card__desc">
-            Lideré la transición de JavaScript vanilla a React para un producto SaaS core. Desarrollé una librería de componentes completa siguiendo el nuevo design system de la empresa, resultando en rollouts más rápidos de funcionalidades.
+            Desarrollo y mantención de microservicios de autenticación y firma digital con Java 8 y Spring Boot para municipios, bancos y otras organizaciones. Implementé un sistema de reportería automatizada end-to-end en AWS (Lambda, SQS, RDS) para el área comercial. Inicié como QA automatizando pruebas con Python y Selenium.
+          </p>
+        </div>
+        <div class="experience-card">
+          <div class="experience-card__header">
+            <div>
+              <h3 class="experience-card__title">Desarrollador Frontend</h3>
+              <p class="experience-card__company">Archfee</p>
+            </div>
+            <span class="experience-card__period">2023 — 2025</span>
+          </div>
+          <p class="experience-card__desc">
+            Desarrollo del frontend de una plataforma para arquitectos con datos anónimos sobre costos y tiempos de construcción. Implementación en Ruby on Rails siguiendo lineamientos de diseño y creación del sitio informativo en WordPress/PHP. Lanzamiento planificado para Chile, Perú y Argentina.
           </p>
         </div>
       </div>
@@ -303,8 +321,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .journey-card--milestones {
-    background-color: var(--color-surface-container-lowest);
-    border: 1px solid rgba(194, 200, 194, 0.15);
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    border: 1px solid var(--color-primary-container);
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
@@ -313,9 +332,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .journey-card__label {
     font-size: 0.875rem;
     font-weight: var(--font-weight-bold);
-    color: var(--color-on-surface-variant);
+    color: rgba(255, 255, 255, 0.7);
     letter-spacing: 0.05em;
     text-transform: uppercase;
+  }
+
+  .journey-card--milestones .milestone-icon {
+    color: var(--color-primary-fixed);
+  }
+
+  .journey-card--milestones .milestone-item__title {
+    color: var(--color-on-primary);
+  }
+
+  .journey-card--milestones .milestone-item__sub {
+    color: rgba(255, 255, 255, 0.7);
   }
 
   .milestone-list {
