@@ -146,7 +146,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   // Fetch last push from GitHub API
   async function fetchLastPush() {
     try {
-      const res = await fetch('/api/github/last-push');
+      const res = await fetch('/api-portfolio/github/last-push');
       if (!res.ok) throw new Error('Failed to fetch');
       
       const data = await res.json();

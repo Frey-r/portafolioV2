@@ -165,7 +165,7 @@ const projects = [
   // Marcar el proyecto con el último push de GitHub
   async function markLatestProject() {
     try {
-      const res = await fetch('/api/github/last-push');
+      const res = await fetch('/api-portfolio/github/last-push');
       if (!res.ok) return;
 
       const data = await res.json();

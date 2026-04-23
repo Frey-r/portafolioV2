@@ -5,7 +5,7 @@
 	# Rutas de la API (Backend Go)
 	handle /api-portfolio/* {
 		# Redirige el tráfico mediante Docker a "backend" en el puerto 8080
-		reverse_proxy backend:8080
+		reverse_proxy backend:8082
 	}
 
 
