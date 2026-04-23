@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio-frontend
+    restart: unless-stopped
+    # Puerto interno solo, cloudflared se encarga del acceso externo
+    expose:
+      - "8081"
+    depends_on:
+      - backend
+    networks:
+      - portfolio-network
+
+  backend:
+    build:
+      context: ../back_portfolio
+      dockerfile: Dockerfile
+    container_name: portfolio-backend
+    restart: unless-stopped
+    environment:
+      - PORT=8080
+    volumes:
+      - backend-data:/app/data
+    env_file:
+      - ../back_portfolio/.env
+    networks:
+      - portfolio-network
+
+networks:
+  portfolio-network:
+    driver: bridge
+
+volumes:
+  backend-data:

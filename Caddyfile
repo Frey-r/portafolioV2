@@ -1,4 +1,4 @@
-:80 {
+:8081 {
 	# Comprimir las respuestas para optimizar la velocidad
 	encode gzip zstd
 
