@@ -46,9 +46,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <!-- Email Card -->
-      <a href="mailto:hello@eduardobachmann.dev" class="contact-card contact-card--email observe-animate delay-2">
+      <a href="mailto:eduardo.bachmann.f@gmail.com" class="contact-card contact-card--email observe-animate delay-2">
         <span class="material-symbols-outlined contact-card__email-icon" style="font-size: 2.5rem; font-variation-settings: 'FILL' 1;">alternate_email</span>
-        <h3 class="contact-card__email-title">hello@eduardobachmann.dev</h3>
+        <h3 class="contact-card__email-title">eduardo.bachmann.f@gmail.com</h3>
         <p class="contact-card__email-sub">La forma más rápida de contactarme</p>
       </a>
 
@@ -90,17 +90,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="contact-card contact-card--social observe-animate delay-5">
         <h3 class="contact-card__social-title">Conecta en Otros Lugares</h3>
         <div class="contact-card__social-links">
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">
+          <a href="https://www.linkedin.com/in/eduardo-bachmann-20a275183/" target="_blank" rel="noopener noreferrer" class="social-link">
             <span class="material-symbols-outlined">link</span> LinkedIn
           </a>
           <a href="https://github.com/Frey-r" target="_blank" rel="noopener noreferrer" class="social-link">
             <span class="material-symbols-outlined">code</span> GitHub
-          </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link">
-            <span class="material-symbols-outlined">forum</span> Twitter
-          </a>
-          <a href="#" class="social-link">
-            <span class="material-symbols-outlined">description</span> Resume
           </a>
         </div>
       </div>
@@ -234,7 +228,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   /* ── Form Card ── */
   .contact-card--form {
-    background-color: var(--color-surface-container-lowest);
+    background-color: var(--color-surface-container-highest);
     padding: var(--space-xl);
     border: 1px solid var(--color-outline-variant);
     box-shadow: var(--shadow-sm);
@@ -281,6 +275,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .contact-form__field {
     display: flex;
     flex-direction: column;
+  }
+
+  .contact-form .form-input,
+  .contact-form .form-textarea {
+    background-color: #F5ECD9;
+    border-color: rgba(66, 36, 37, 0.3);
+  }
+
+  .contact-form .form-input:focus,
+  .contact-form .form-textarea:focus {
+    border-color: #422425;
+    box-shadow: 0 0 0 3px rgba(66, 36, 37, 0.15);
   }
 
   .contact-form__submit {
@@ -466,7 +472,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   /* ── Social Links Card ── */
   .contact-card--social {
-    background-color: var(--color-surface-container-lowest);
+    background-color: var(--color-surface-container-highest);
     padding: var(--space-lg);
     border: 1px solid var(--color-outline-variant);
     display: flex;
