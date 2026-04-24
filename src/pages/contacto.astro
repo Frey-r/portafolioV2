@@ -210,7 +210,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-lg);
-    grid-auto-rows: minmax(200px, auto);
+    grid-auto-rows: auto;
   }
 
   @media (min-width: 768px) {
@@ -335,10 +335,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .contact-card__email-title {
-    font-size: 1.125rem;
+    font-size: 0.9375rem;
     font-weight: var(--font-weight-bold);
     color: var(--color-on-primary-container);
     transition: color var(--transition-normal);
+    word-break: break-all;
+  }
+
+  @media (min-width: 480px) {
+    .contact-card__email-title {
+      font-size: 1.125rem;
+      word-break: normal;
+    }
   }
 
   .contact-card--email:hover .contact-card__email-title {

@@ -175,8 +175,15 @@ const currentYear = now.getFullYear();
   .about {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4xl);
-    padding-block: var(--space-3xl) var(--space-4xl);
+    gap: var(--space-2xl);
+    padding-block: var(--space-2xl) var(--space-3xl);
+  }
+
+  @media (min-width: 768px) {
+    .about {
+      gap: var(--space-4xl);
+      padding-block: var(--space-3xl) var(--space-4xl);
+    }
   }
 
   /* ── Section Header ── */
@@ -245,9 +252,15 @@ const currentYear = now.getFullYear();
 
   .about-hero__image-wrap {
     border-radius: var(--radius-xl);
-    min-height: 400px;
+    min-height: 280px;
     overflow: hidden;
     position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .about-hero__image-wrap {
+      min-height: 400px;
+    }
   }
 
   .about-hero__image-wrap img {
@@ -391,9 +404,15 @@ const currentYear = now.getFullYear();
   .experience-card {
     background-color: var(--color-surface-container-low);
     border-radius: var(--radius-xl);
-    padding: var(--space-xl);
+    padding: var(--space-lg);
     border-left: 4px solid transparent;
     transition: all var(--transition-normal);
+  }
+
+  @media (min-width: 768px) {
+    .experience-card {
+      padding: var(--space-xl);
+    }
   }
 
   .experience-card:hover {
@@ -471,11 +490,17 @@ const currentYear = now.getFullYear();
   .philosophy-card {
     background-color: var(--color-primary);
     border-radius: var(--radius-xl);
-    padding: var(--space-xl);
+    padding: var(--space-lg);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-md);
+  }
+
+  @media (min-width: 768px) {
+    .philosophy-card {
+      padding: var(--space-xl);
+    }
   }
 
   .philosophy-card__icon {

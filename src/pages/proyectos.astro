@@ -220,7 +220,7 @@ const projects = [
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-lg);
-    grid-auto-rows: 300px;
+    grid-auto-rows: auto;
   }
 
   @media (min-width: 768px) {
@@ -244,6 +244,7 @@ const projects = [
     flex-direction: column;
     border: 1px solid rgba(194, 200, 194, 0.4);
     box-shadow: var(--shadow-sm);
+    min-height: 300px;
   }
 
   @media (min-width: 768px) {
@@ -351,12 +352,13 @@ const projects = [
   /* ── Standard Cards ── */
   .project-card--standard {
     background-color: var(--color-surface-container-low);
-    padding: 1.75rem;
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border: 1px solid rgba(194, 200, 194, 0.4);
     transition: background-color var(--transition-normal);
+    min-height: 200px;
   }
 
   .project-card--standard:hover {
@@ -396,12 +398,13 @@ const projects = [
   .project-card--accent {
     background-color: var(--color-primary-container);
     color: var(--color-on-primary-container);
-    padding: 1.75rem;
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border: 1px solid rgba(23, 49, 36, 0.2);
     box-shadow: var(--shadow-sm);
+    min-height: 200px;
   }
   
   .project-card--accent .project-card__title,
@@ -450,13 +453,14 @@ const projects = [
   /* ── Wide Card ── */
   .project-card--wide {
     background-color: var(--color-surface-variant);
-    padding: 1.75rem;
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
     align-items: flex-start;
     border: 1px solid rgba(194, 200, 194, 0.3);
     transition: border-color var(--transition-normal);
+    min-height: 200px;
   }
 
   @media (min-width: 768px) {
