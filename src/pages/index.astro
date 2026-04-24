@@ -30,7 +30,7 @@ const yearsExp = Math.floor((now.getTime() - startDate.getTime()) / (1000 * 60 *
       </div>
 
       <!-- 2. Featured Project Tile -->
-      <a href="https://github.com/Frey-r/portafolio" target="_blank" rel="noopener noreferrer" class="bento-cell bento-cell--project observe-animate delay-1">
+      <a href="https://github.com/Frey-r" id="last-push-link" target="_blank" rel="noopener noreferrer" class="bento-cell bento-cell--project observe-animate delay-1">
         <div class="bento-cell__badge">
           <span>Deployment Reciente</span>
         </div>
@@ -163,6 +163,11 @@ const yearsExp = Math.floor((now.getTime() - startDate.getTime()) / (1000 * 60 *
       const messageEl = document.getElementById('last-push-message');
       const shaEl = document.getElementById('last-push-sha');
       const timeEl = document.getElementById('last-push-time');
+      const linkEl = document.getElementById('last-push-link') as HTMLAnchorElement;
+      
+      if (data.repo && linkEl) {
+        linkEl.href = `https://github.com/${data.repo}`;
+      }
       
       if (repoEl) repoEl.textContent = data.repo || 'portafolio';
       if (messageEl) messageEl.textContent = data.message || 'Sin mensaje';
