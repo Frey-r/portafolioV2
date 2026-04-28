@@ -1,20 +1,23 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Contacto — Eduardo Bachmann" description="Escríbeme para discutir oportunidades, colaboraciones o simplemente para saludar.">
+<BaseLayout
+  title="Contacto — Eduardo Bachmann"
+  description="Escríbeme para discutir oportunidades, colaboraciones o simplemente para saludar."
+>
   <section class="contact container">
     <!-- Header -->
     <div class="contact__header observe-animate">
       <h1 class="contact__title">Construyamos algo que perdure.</h1>
       <p class="contact__subtitle">
-        Escríbeme para discutir oportunidades, colaboraciones o simplemente para saludar. Actualmente disponible para nuevos proyectos.
+        Escríbeme para discutir oportunidades, colaboraciones o simplemente para
+        saludar. Actualmente disponible para nuevos proyectos.
       </p>
     </div>
 
     <!-- Bento Grid -->
     <div class="contact-grid">
-
       <!-- Contact Form -->
       <div class="contact-card contact-card--form observe-animate delay-1">
         <h2 class="contact-card__heading">
@@ -25,41 +28,82 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="contact-form__row">
             <div class="contact-form__field">
               <label class="form-label" for="contact-name">Nombre</label>
-              <input class="form-input" id="contact-name" type="text" placeholder="Tu nombre" required />
+              <input
+                class="form-input"
+                id="contact-name"
+                type="text"
+                placeholder="Tu nombre"
+                required
+              />
             </div>
             <div class="contact-form__field">
               <label class="form-label" for="contact-email">Email</label>
-              <input class="form-input" id="contact-email" type="email" placeholder="tu@email.com" required />
+              <input
+                class="form-input"
+                id="contact-email"
+                type="email"
+                placeholder="tu@email.com"
+                required
+              />
             </div>
           </div>
           <div class="contact-form__field">
             <label class="form-label" for="contact-message">Mensaje</label>
-            <textarea class="form-textarea" id="contact-message" placeholder="¿En qué puedo ayudarte?" rows="5" required></textarea>
+            <textarea
+              class="form-textarea"
+              id="contact-message"
+              placeholder="¿En qué puedo ayudarte?"
+              rows="5"
+              required></textarea>
           </div>
           <div class="contact-form__submit">
-            <button type="submit" class="btn btn-primary btn-lg" id="submit-btn">
+            <button
+              type="submit"
+              class="btn btn-primary btn-lg"
+              id="submit-btn"
+            >
               Enviar Mensaje
-              <span class="material-symbols-outlined" style="font-size: 18px;">send</span>
+              <span class="material-symbols-outlined" style="font-size: 18px;"
+                >send</span
+              >
             </button>
           </div>
         </form>
       </div>
 
       <!-- Email Card -->
-      <a href="mailto:eduardo.bachmann.f@gmail.com" class="contact-card contact-card--email observe-animate delay-2">
-        <span class="material-symbols-outlined contact-card__email-icon" style="font-size: 2.5rem; font-variation-settings: 'FILL' 1;">alternate_email</span>
-        <h3 class="contact-card__email-title">eduardo.bachmann.f@gmail.com</h3>
-        <p class="contact-card__email-sub">La forma más rápida de contactarme</p>
+      <a
+        href="mailto:eduardo@ebachmann.dev"
+        class="contact-card contact-card--email observe-animate delay-2"
+      >
+        <span
+          class="material-symbols-outlined contact-card__email-icon"
+          style="font-size: 2.5rem; font-variation-settings: 'FILL' 1;"
+          >alternate_email</span
+        >
+        <h3 class="contact-card__email-title">eduardo@ebachmann.dev</h3>
+        <p class="contact-card__email-sub">
+          La forma más rápida de contactarme
+        </p>
       </a>
 
       <!-- Featured Insight -->
       <div class="contact-card contact-card--insight observe-animate delay-3">
         <div class="contact-card__insight-header">
           <div class="contact-card__insight-badge">
-            <span class="material-symbols-outlined" style="font-size: 14px;">trending_up</span>
+            <span class="material-symbols-outlined" style="font-size: 14px;"
+              >trending_up</span
+            >
             <span>INSIGHT DESTACADO</span>
           </div>
-          <a href="#" id="linkedin-link" target="_blank" rel="noopener noreferrer" class="contact-card__insight-link" aria-label="Ver artículo">
+          <a
+            href="#"
+            id="linkedin-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card__insight-link"
+            aria-label="Ver artículo"
+          >
             <span class="material-symbols-outlined">open_in_new</span>
           </a>
         </div>
@@ -67,8 +111,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Cargando último insight...
         </p>
         <div class="contact-card__insight-stats">
-          <span><span class="material-symbols-outlined" style="font-size: 14px;">thumb_up</span> <span id="linkedin-likes">--</span></span>
-          <span><span class="material-symbols-outlined" style="font-size: 14px;">comment</span> <span id="linkedin-comments">--</span></span>
+          <span
+            ><span class="material-symbols-outlined" style="font-size: 14px;"
+              >thumb_up</span
+            >
+            <span id="linkedin-likes">--</span></span
+          >
+          <span
+            ><span class="material-symbols-outlined" style="font-size: 14px;"
+              >comment</span
+            >
+            <span id="linkedin-comments">--</span></span
+          >
         </div>
       </div>
 
@@ -90,29 +144,38 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="contact-card contact-card--social observe-animate delay-5">
         <h3 class="contact-card__social-title">Conecta en Otros Lugares</h3>
         <div class="contact-card__social-links">
-          <a href="https://www.linkedin.com/in/eduardo-bachmann-20a275183/" target="_blank" rel="noopener noreferrer" class="social-link">
+          <a
+            href="https://www.linkedin.com/in/eduardo-bachmann-20a275183/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+          >
             <span class="material-symbols-outlined">link</span> LinkedIn
           </a>
-          <a href="https://github.com/Frey-r" target="_blank" rel="noopener noreferrer" class="social-link">
+          <a
+            href="https://github.com/Frey-r"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+          >
             <span class="material-symbols-outlined">code</span> GitHub
           </a>
         </div>
       </div>
-
     </div>
   </section>
 </BaseLayout>
 
 <script>
   function updateContactTime() {
-    const el = document.getElementById('contact-time');
+    const el = document.getElementById("contact-time");
     if (el) {
       const now = new Date();
-      el.textContent = now.toLocaleTimeString('es-CL', {
-        hour: '2-digit',
-        minute: '2-digit',
+      el.textContent = now.toLocaleTimeString("es-CL", {
+        hour: "2-digit",
+        minute: "2-digit",
         hour12: true,
-        timeZone: 'America/Santiago'
+        timeZone: "America/Santiago",
       });
     }
   }
@@ -120,19 +183,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   setInterval(updateContactTime, 30000);
 
   // Simple form interaction
-  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const form = document.getElementById("contact-form") as HTMLFormElement;
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
-      const btn = document.getElementById('submit-btn');
+      const btn = document.getElementById("submit-btn");
       if (btn) {
-        btn.textContent = '✓ Mensaje Enviado';
-        btn.style.backgroundColor = 'var(--color-primary-container)';
-        btn.style.color = 'var(--color-on-primary-container)';
+        btn.textContent = "✓ Mensaje Enviado";
+        btn.style.backgroundColor = "var(--color-primary-container)";
+        btn.style.color = "var(--color-on-primary-container)";
         setTimeout(() => {
-          btn.innerHTML = 'Enviar Mensaje <span class="material-symbols-outlined" style="font-size: 18px;">send</span>';
-          btn.style.backgroundColor = '';
-          btn.style.color = '';
+          btn.innerHTML =
+            'Enviar Mensaje <span class="material-symbols-outlined" style="font-size: 18px;">send</span>';
+          btn.style.backgroundColor = "";
+          btn.style.color = "";
           form.reset();
         }, 2500);
       }
@@ -142,7 +206,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   // Formatting helper
   function formatNumber(num) {
     if (num >= 1000) {
-      return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+      return (num / 1000).toFixed(1).replace(/\.0$/, "") + "k";
     }
     return num;
   }
@@ -150,14 +214,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   // Fetch LinkedIn Insight Data
   async function fetchLinkedInInsight() {
     try {
-      const res = await fetch('/api-portfolio/linkedin/top-post');
+      const res = await fetch("/api-portfolio/linkedin/top-post");
       if (res.ok) {
         const jsonResponse = await res.json();
         const post = jsonResponse.data; // The actual post is inside the generic 'data' wrapper
-        const quoteEl = document.getElementById('linkedin-quote');
-        const likesEl = document.getElementById('linkedin-likes');
-        const commentsEl = document.getElementById('linkedin-comments');
-        const linkEl = document.getElementById('linkedin-link') as HTMLAnchorElement;
+        const quoteEl = document.getElementById("linkedin-quote");
+        const likesEl = document.getElementById("linkedin-likes");
+        const commentsEl = document.getElementById("linkedin-comments");
+        const linkEl = document.getElementById(
+          "linkedin-link",
+        ) as HTMLAnchorElement;
 
         if (quoteEl) quoteEl.textContent = `"${post.text}"`;
         if (likesEl) likesEl.textContent = formatNumber(post.likes);
@@ -165,14 +231,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         if (linkEl) linkEl.href = post.url;
       }
     } catch (e) {
-      console.error('Failed to fetch LinkedIn insight:', e);
+      console.error("Failed to fetch LinkedIn insight:", e);
       // Fallback
-      const quoteEl = document.getElementById('linkedin-quote');
-      if (quoteEl) quoteEl.textContent = '"La arquitectura de las aplicaciones web modernas requiere un balance entre rendimiento bruto y una estructura de código mantenible..."';
-      const likesEl = document.getElementById('linkedin-likes');
-      if (likesEl) likesEl.textContent = '1.2k';
-      const commentsEl = document.getElementById('linkedin-comments');
-      if (commentsEl) commentsEl.textContent = '84';
+      const quoteEl = document.getElementById("linkedin-quote");
+      if (quoteEl)
+        quoteEl.textContent =
+          '"La arquitectura de las aplicaciones web modernas requiere un balance entre rendimiento bruto y una estructura de código mantenible..."';
+      const likesEl = document.getElementById("linkedin-likes");
+      if (likesEl) likesEl.textContent = "1.2k";
+      const commentsEl = document.getElementById("linkedin-comments");
+      if (commentsEl) commentsEl.textContent = "84";
     }
   }
 
@@ -279,7 +347,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .contact-form .form-input,
   .contact-form .form-textarea {
-    background-color: #F5ECD9;
+    background-color: #f5ecd9;
     border-color: rgba(66, 36, 37, 0.3);
   }
 
