@@ -182,23 +182,52 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   updateContactTime();
   setInterval(updateContactTime, 30000);
 
-  // Simple form interaction
+  // Form interaction with n8n Webhook
   const form = document.getElementById("contact-form") as HTMLFormElement;
   if (form) {
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const btn = document.getElementById("submit-btn");
+      const formData = {
+        name: (document.getElementById("contact-name") as HTMLInputElement).value,
+        email: (document.getElementById("contact-email") as HTMLInputElement).value,
+        message: (document.getElementById("contact-message") as HTMLTextAreaElement).value,
+        source: "portfolio_v2"
+      };
+
       if (btn) {
-        btn.textContent = "✓ Mensaje Enviado";
-        btn.style.backgroundColor = "var(--color-primary-container)";
-        btn.style.color = "var(--color-on-primary-container)";
-        setTimeout(() => {
-          btn.innerHTML =
-            'Enviar Mensaje <span class="material-symbols-outlined" style="font-size: 18px;">send</span>';
-          btn.style.backgroundColor = "";
-          btn.style.color = "";
-          form.reset();
-        }, 2500);
+        btn.textContent = "Enviando...";
+        btn.setAttribute("disabled", "true");
+
+        try {
+          // Pointing to your n8n webhook (replace with actual production URL if different)
+          const response = await fetch("https://n8n.ebachmann.dev/webhook/contact-onboarding", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+          });
+
+          if (response.ok) {
+            btn.textContent = "✓ Mensaje Enviado";
+            btn.style.backgroundColor = "var(--color-primary-container)";
+            btn.style.color = "var(--color-on-primary-container)";
+            form.reset();
+          } else {
+            throw new Error("Error en el envío");
+          }
+        } catch (error) {
+          console.error("Submission error:", error);
+          btn.textContent = "Error al enviar";
+          btn.style.backgroundColor = "#ffdad6";
+          btn.style.color = "#410002";
+        } finally {
+          setTimeout(() => {
+            btn.innerHTML = 'Enviar Mensaje <span class="material-symbols-outlined" style="font-size: 18px;">send</span>';
+            btn.style.backgroundColor = "";
+            btn.style.color = "";
+            btn.removeAttribute("disabled");
+          }, 4000);
+        }
       }
     });
   }
