@@ -341,19 +341,19 @@ const chips = ["Python", "Go", "Vue", "Astro", "Lambda", "SQS"];
       const clockEl = document.getElementById("clock");
       const dateEl = document.getElementById("date-text");
       const yearsEl = document.getElementById("years");
+      // Solo toca el DOM cuando el texto cambia: evita repintar las tarjetas glass cada segundo.
+      const setText = (el: HTMLElement | null, v: string) => {
+        if (el && el.textContent !== v) el.textContent = v;
+      };
       function tick() {
         const now = new Date();
         const loc = isEs() ? "es-CL" : "en-US";
-        if (clockEl)
-          clockEl.textContent = now.toLocaleTimeString(loc, {
-            timeZone: TZ,
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false,
-          });
-        if (dateEl)
-          dateEl.textContent = now.toLocaleDateString(loc, { timeZone: TZ, day: "2-digit", month: "short" });
-        if (yearsEl) yearsEl.textContent = ((now.getTime() - START) / 31557600000).toFixed(1);
+        setText(
+          clockEl,
+          now.toLocaleTimeString(loc, { timeZone: TZ, hour: "2-digit", minute: "2-digit", hour12: false })
+        );
+        setText(dateEl, now.toLocaleDateString(loc, { timeZone: TZ, day: "2-digit", month: "short" }));
+        setText(yearsEl, ((now.getTime() - START) / 31557600000).toFixed(1));
       }
       tick();
       setInterval(tick, 1000);

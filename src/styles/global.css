@@ -118,6 +118,7 @@ html:not([data-theme="light"]) .only-light {
   z-index: 0;
   pointer-events: none;
   opacity: 0.75;
+  transform: translateZ(0);
 }
 .blob {
   position: absolute;
@@ -166,6 +167,12 @@ html:not([data-theme="light"]) .only-light {
   box-shadow: var(--shadow), inset 0 1px 0 var(--inset);
   position: relative;
   overflow: hidden;
+  /* Capa de composición propia y estable desde el primer frame: evita que
+     Chrome reagrupe capas cuando arrancan las animaciones y el backdrop-filter
+     se recalcule a medias (franjas que titilan). */
+  isolation: isolate;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 [data-glass]::after {
   content: "";
@@ -444,8 +451,10 @@ html:not([data-theme="light"]) .only-light {
   gap: 3px;
   height: 16px;
   flex: none;
+  contain: layout paint;
 }
 .bars > span {
+  will-change: transform;
   width: 2.5px;
   height: 100%;
   border-radius: 2px;
