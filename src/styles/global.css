@@ -109,16 +109,13 @@ html:not([data-theme="light"]) .only-light {
   overflow: hidden;
 }
 
-/* Fondo: degradados radiales en vez de círculos con filter: blur().
-   Un filter enorme bajo elementos con backdrop-filter provoca en Chrome
-   franjas sin desenfocar (tiles) en las tarjetas glass. */
+/* Fondo: degradados radiales (ya difusos) en vez de círculos con filter: blur(). */
 .blobs {
   position: fixed;
   inset: -20%;
   z-index: 0;
   pointer-events: none;
   opacity: 0.75;
-  transform: translateZ(0);
 }
 .blob {
   position: absolute;
@@ -159,32 +156,15 @@ html:not([data-theme="light"]) .only-light {
 }
 
 /* ── Glass ── */
-/* La sombra vive en la tarjeta y el desenfoque en ::before. Tener box-shadow
-   y backdrop-filter en el mismo elemento genera en Chromium/Brave una franja
-   sin desenfocar cerca del borde (su tamaño cambia con la sombra del tema). */
+/* Vidrio como tinte translúcido, sin backdrop-filter: el fondo ya es un
+   degradado difuso, así que el desenfoque no aportaba y en Brave/Chromium
+   (render por GPU) generaba bandas y franjas que titilaban. */
 .glass {
-  --blur: 22px;
-  --sat: 1.6;
+  background: var(--glass);
   border: 1px solid var(--stroke);
   box-shadow: var(--shadow), inset 0 1px 0 var(--inset);
   position: relative;
-  z-index: 0;
   overflow: hidden;
-  /* Capa propia y estable desde el primer frame (evita reagrupar capas
-     cuando arrancan las animaciones). */
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-.glass::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  pointer-events: none;
-  background: var(--glass);
-  backdrop-filter: blur(var(--blur)) saturate(var(--sat));
-  -webkit-backdrop-filter: blur(var(--blur)) saturate(var(--sat));
 }
 [data-glass]::after {
   content: "";
@@ -230,7 +210,6 @@ html:not([data-theme="light"]) .only-light {
   gap: 6px;
   padding: 6px;
   border-radius: 999px;
-  --blur: 20px;
 }
 .toggles__sep {
   width: 1px;
@@ -341,8 +320,6 @@ html:not([data-theme="light"]) .only-light {
   justify-content: space-between;
   gap: 28px;
   min-height: 300px;
-  --blur: 24px;
-  --sat: 1.7;
 }
 .hero__copy {
   display: flex;
