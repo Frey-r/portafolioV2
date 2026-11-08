@@ -1,622 +1,430 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import "../styles/global.css";
 
-// Cálculo dinámico de años de experiencia desde 1 de mayo de 2022
-const startDate = new Date('2022-05-01');
-const now = new Date();
-const yearsExp = Math.floor((now.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
+const title = "Eduardo Bachmann — Full Stack Developer";
+const description =
+  "Eduardo Bachmann — Desarrollador backend construyendo microservicios, flujos agénticos con IA y arquitecturas cloud robustas.";
+
+// Experiencia desde abril 2022 (se recalcula en el cliente)
+const START = new Date(2022, 3, 1);
+const yearsAtBuild = ((Date.now() - START.getTime()) / 31557600000).toFixed(1);
+
+const LINKEDIN = "https://www.linkedin.com/in/eduardo-bachmann-20a275183/";
+const GITHUB = "https://github.com/Frey-r";
+
+const projects = [
+  {
+    name: "Job Scraper MCP",
+    es: "Servidor MCP en Python que extrae ofertas de trabajo y se integra de forma fluida con LLMs y agentes.",
+    en: "Python MCP server that scrapes job listings and plugs straight into LLMs and agents.",
+    tags: [{ es: "Python" }, { es: "MCP" }, { es: "LLM" }],
+    url: "https://github.com/Frey-r/job-scraper-mcp",
+  },
+  {
+    name: "Go-Gin Agent",
+    es: "Agente y microservicio en Go con Gin, diseñado para peticiones livianas de alto rendimiento.",
+    en: "Agent and microservice in Go with Gin, built for lightweight high-throughput requests.",
+    tags: [{ es: "Go" }, { es: "Gin" }, { es: "Microservicio", en: "Microservice" }],
+    url: "https://github.com/Frey-r/go-gin-agent",
+  },
+];
+
+const jobs = [
+  {
+    period: "2025 —",
+    role: { es: "Backend Developer IA", en: "AI Backend Developer" },
+    company: "ZeroQ",
+    es: "flujos agénticos, multi-agentes y servidores MCP. Python, Go, AWS.",
+    en: "agentic and multi-agent workflows, MCP servers. Python, Go, AWS.",
+  },
+  {
+    period: "2022 — 2025",
+    role: { es: "Desarrollador Backend", en: "Backend Developer" },
+    company: "Idok",
+    es: "microservicios de autenticación y firma digital (Java, Spring Boot) y reportería en AWS.",
+    en: "auth and digital-signature microservices (Java, Spring Boot) plus AWS reporting pipeline.",
+  },
+  {
+    period: "2023 — 2025",
+    role: { es: "Desarrollador Frontend", en: "Frontend Developer" },
+    company: "Archfee",
+    es: "plataforma de costos de construcción para arquitectos en Ruby on Rails.",
+    en: "construction-cost platform for architects, built on Ruby on Rails.",
+  },
+];
+
+const stack = [
+  { es: "IA & Agentes", en: "AI & Agents", tools: "Langchain · Langgraph · MCP" },
+  { es: "Backend", en: "Backend", tools: "FastAPI · Go/Gin" },
+  { es: "Datos", en: "Data", tools: "SQL · NoSQL · Vector" },
+  { es: "Cloud & DevOps", en: "Cloud & DevOps", tools: "AWS · Docker" },
+];
+
+const chips = ["Python", "Go", "Vue", "Astro", "Lambda", "SQS"];
 ---
 
-<BaseLayout title="Eduardo Bachmann — Full Stack Developer">
-  <section class="hero container">
-    <div class="bento-grid">
-
-      <!-- 1. Intro Tile (Double wide, Double tall) -->
-      <div class="bento-cell bento-cell--intro observe-animate">
-        <div class="bento-cell__overlay"></div>
-        <div class="bento-cell__content">
-          <span class="bento-cell__label">INTRODUCCIÓN</span>
-          <h1 class="bento-cell__heading">
-            Construyendo sistemas<br/>que piensan y escalan.
-          </h1>
-          <p class="bento-cell__text">
-            Desarrollador backend con {yearsExp}+ años de experiencia construyendo microservicios, flujos agenticos con IA y arquitecturas cloud robustas.
-          </p>
-        </div>
-        <div class="bento-cell__actions">
-          <a href="/proyectos" class="btn btn-primary btn-lg">Ver Proyectos</a>
-          <a href="https://github.com/Frey-r" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">Ver GitHub</a>
-        </div>
+<!doctype html>
+<html lang="es" data-theme="dark" data-lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Eduardo Bachmann" />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+    <script is:inline>
+      (function () {
+        var r = document.documentElement;
+        try {
+          var t = localStorage.getItem("eb-theme");
+          var l = localStorage.getItem("eb-lang");
+          if (t === "light" || t === "dark") r.dataset.theme = t;
+          if (l === "es" || l === "en") r.dataset.lang = l;
+        } catch (_) {}
+        r.lang = r.dataset.lang;
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <div class="blobs" aria-hidden="true">
+        <div class="blob blob--1"></div>
+        <div class="blob blob--2"></div>
+        <div class="blob blob--3"></div>
       </div>
 
-      <!-- 2. Featured Project Tile -->
-      <a href="https://github.com/Frey-r" id="last-push-link" target="_blank" rel="noopener noreferrer" class="bento-cell bento-cell--project observe-animate delay-1">
-        <div class="bento-cell__badge">
-          <span>Deployment Reciente</span>
-        </div>
-        <div class="bento-cell__image-wrap">
-          <div class="bento-cell__project-content" id="last-push-content">
-            <h3 id="last-push-repo">Cargando...</h3>
-            <p id="last-push-message">Obteniendo último push...</p>
-            <div class="last-push-meta">
-              <span id="last-push-sha"></span>
-              <span id="last-push-time"></span>
-            </div>
+      <div class="wrap">
+        <header class="header">
+          <div class="brand">
+            <span class="brand__name">Eduardo Bachmann</span>
+            <span class="brand__role">Full Stack · Backend · IA</span>
           </div>
-        </div>
-      </a>
+          <div class="toggles glass" data-glass>
+            <button type="button" class="toggle" id="toggle-lang">
+              <span data-l="es">EN</span><span data-l="en">ES</span>
+            </button>
+            <span class="toggles__sep" aria-hidden="true"></span>
+            <button type="button" class="toggle" id="toggle-theme">
+              <span class="only-dark"><span data-l="es">Claro</span><span data-l="en">Light</span></span>
+              <span class="only-light"><span data-l="es">Oscuro</span><span data-l="en">Dark</span></span>
+            </button>
+          </div>
+        </header>
 
-      <!-- 3. Status Tile -->
-      <div class="bento-cell bento-cell--status observe-animate delay-2">
-        <div class="bento-cell__status-gradient"></div>
-        <div class="bento-cell__status-content">
-          <div class="pulse-ring">
-            <span class="pulse-dot"></span>
-          </div>
-          <h3>Disponible</h3>
-          <p>Aceptando nuevos proyectos para Q3 2025</p>
-        </div>
+        <main class="bento">
+          <!-- Hero -->
+          <section class="cell glass cell--hero span-8" data-glass>
+            <div class="hero__copy">
+              <h1 class="hero__title">
+                <span data-l="es">Construyendo sistemas que piensan y escalan.</span>
+                <span data-l="en">Building systems that think and scale.</span>
+              </h1>
+              <p class="hero__lead">
+                <span data-l="es">Desarrollador backend construyendo microservicios, flujos agénticos con IA y arquitecturas cloud robustas.</span>
+                <span data-l="en">Backend developer building microservices, agentic AI workflows and robust cloud architecture.</span>
+              </p>
+            </div>
+            <div class="actions">
+              <a href={GITHUB} target="_blank" rel="noopener noreferrer" class="btn btn--solid">
+                <span data-l="es">Ver GitHub</span><span data-l="en">View GitHub</span>
+              </a>
+              <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" class="btn btn--ghost">LinkedIn</a>
+            </div>
+          </section>
+
+          <!-- Foto -->
+          <section class="cell glass cell--photo span-4" data-glass>
+            <img src="/profile.webp" alt="Eduardo Bachmann" class="photo__img" />
+            <div class="photo__shade" aria-hidden="true"></div>
+            <div class="photo__caption">
+              <span class="photo__name">Eduardo Bachmann</span>
+              <span class="photo__place">Santiago, Chile</span>
+            </div>
+          </section>
+
+          <!-- Experiencia -->
+          <section class="cell glass cell--stat span-3" data-glass>
+            <span class="label"><span data-l="es">Experiencia</span><span data-l="en">Experience</span></span>
+            <div class="stat">
+              <span class="stat__big" id="years">{yearsAtBuild}</span>
+              <span class="stat__sub">
+                <span data-l="es">años profesionales · desde abril 2022</span>
+                <span data-l="en">professional years · since April 2022</span>
+              </span>
+            </div>
+          </section>
+
+          <!-- Hora local -->
+          <section class="cell glass cell--stat span-3" data-glass>
+            <span class="label"><span data-l="es">Hora local</span><span data-l="en">Local time</span></span>
+            <div class="stat">
+              <span class="stat__clock mono" id="clock">--:--</span>
+              <span class="stat__sub">Chile · <span id="date-text"></span></span>
+            </div>
+          </section>
+
+          <!-- Disponibilidad -->
+          <section class="cell glass cell--stat span-3" data-glass>
+            <span class="label"><span data-l="es">Estado</span><span data-l="en">Status</span></span>
+            <div class="stat stat--status">
+              <span class="status">
+                <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
+                <span data-l="es">Disponible</span><span data-l="en">Available</span>
+              </span>
+              <span class="stat__sub">
+                <span data-l="es">Aceptando nuevos proyectos</span>
+                <span data-l="en">Taking on new projects</span>
+              </span>
+            </div>
+          </section>
+
+          <!-- Último push -->
+          <section class="cell glass cell--stat span-3" data-glass>
+            <span class="label"><span data-l="es">Último push</span><span data-l="en">Latest push</span></span>
+            <div class="stat stat--push">
+              <a href={`${GITHUB}?tab=repositories`} target="_blank" rel="noopener noreferrer" class="push__repo mono" id="push-repo">
+                <span data-l="es">cargando…</span><span data-l="en">loading…</span>
+              </a>
+              <span class="stat__sub" id="push-when">
+                <span data-l="es">consultando GitHub</span><span data-l="en">querying GitHub</span>
+              </span>
+            </div>
+          </section>
+
+          <!-- Proyectos -->
+          {
+            projects.map((p) => (
+              <section class="cell glass cell--project span-6" data-glass>
+                <h2 class="project__title">{p.name}</h2>
+                <p class="project__desc">
+                  <span data-l="es">{p.es}</span>
+                  <span data-l="en">{p.en}</span>
+                </p>
+                <div class="project__foot">
+                  {p.tags.map((t) => (
+                    <span class="pill mono">
+                      {t.en ? (
+                        <>
+                          <span data-l="es">{t.es}</span>
+                          <span data-l="en">{t.en}</span>
+                        </>
+                      ) : (
+                        t.es
+                      )}
+                    </span>
+                  ))}
+                  <a href={p.url} target="_blank" rel="noopener noreferrer" class="project__link">
+                    Source →
+                  </a>
+                </div>
+              </section>
+            ))
+          }
+
+          <!-- Trayectoria -->
+          <section class="cell glass cell--list span-7" data-glass>
+            <h2 class="cell__title"><span data-l="es">Trayectoria</span><span data-l="en">Track record</span></h2>
+            <div class="timeline">
+              {
+                jobs.map((j, i) => (
+                  <>
+                    {i > 0 && <div class="rule" />}
+                    <div class="job">
+                      <span class="job__period mono">{j.period}</span>
+                      <div class="job__body">
+                        <span class="job__role">
+                          <span data-l="es">{j.role.es}</span>
+                          <span data-l="en">{j.role.en}</span>
+                        </span>
+                        <span class="job__desc">
+                          {j.company} — <span data-l="es">{j.es}</span>
+                          <span data-l="en">{j.en}</span>
+                        </span>
+                      </div>
+                    </div>
+                  </>
+                ))
+              }
+            </div>
+          </section>
+
+          <!-- Stack -->
+          <section class="cell glass cell--list span-5" data-glass>
+            <h2 class="cell__title">Stack</h2>
+            <div class="stack">
+              {
+                stack.map((s, i) => (
+                  <>
+                    {i > 0 && <div class="rule" />}
+                    <div class="stack__row">
+                      <span class="stack__name">
+                        {s.es === s.en ? (
+                          s.es
+                        ) : (
+                          <>
+                            <span data-l="es">{s.es}</span>
+                            <span data-l="en">{s.en}</span>
+                          </>
+                        )}
+                      </span>
+                      <span class="stack__tools mono">{s.tools}</span>
+                    </div>
+                  </>
+                ))
+              }
+            </div>
+            <div class="chips">
+              {chips.map((c) => <span class="chip mono">{c}</span>)}
+            </div>
+          </section>
+
+          <!-- Contacto -->
+          <section class="cell glass cell--contact span-12" data-glass id="contacto">
+            <div class="contact__copy">
+              <h2 class="contact__title">
+                <span data-l="es">¿Construimos algo?</span><span data-l="en">Let's build something.</span>
+              </h2>
+              <span class="contact__sub">
+                <span data-l="es">Respondo en menos de 24 horas.</span><span data-l="en">I reply within 24 hours.</span>
+              </span>
+            </div>
+            <div class="actions">
+              <a href="mailto:eduardo@ebachmann.dev" class="btn btn--solid btn--lg">
+                <span data-l="es">Contáctame</span><span data-l="en">Get in touch</span>
+              </a>
+              <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--lg">LinkedIn</a>
+              <a href={GITHUB} target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--lg">GitHub</a>
+            </div>
+          </section>
+        </main>
+
+        <footer class="footer">
+          <span>© {new Date().getFullYear()} Eduardo Bachmann</span>
+          <span><span data-l="es">Diseñado para perdurar</span><span data-l="en">Designed to endure</span></span>
+        </footer>
       </div>
-
-      <!-- 4. Location Tile -->
-      <div class="bento-cell bento-cell--location observe-animate delay-3">
-        <span class="bento-cell__label">HORA LOCAL</span>
-        <div class="bento-cell__location-content">
-          <div class="bento-cell__time" id="local-time">--:--</div>
-          <div class="bento-cell__place">
-            <span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>
-            Chile
-          </div>
-        </div>
-        <div class="bento-cell__location-blur"></div>
-      </div>
-
-      <!-- 5. Tech Stack Tile -->
-      <div class="bento-cell bento-cell--stack observe-animate delay-4">
-        <span class="bento-cell__label">STACK PRINCIPAL</span>
-        <div class="stack-grid">
-          <div class="stack-item">
-            <div class="stack-item__icon">
-              <span class="material-symbols-outlined">smart_toy</span>
-            </div>
-            <div>
-              <h4>IA & Agentes</h4>
-              <p>Flujos agenticos, multi-agentes y servidores MCP con Langchain y Langgraph.</p>
-            </div>
-          </div>
-          <div class="stack-item">
-            <div class="stack-item__icon">
-              <span class="material-symbols-outlined">dns</span>
-            </div>
-            <div>
-              <h4>Backend</h4>
-              <p>Microservicios en Python (FastAPI) y Go (Gin) para producción.</p>
-            </div>
-          </div>
-          <div class="stack-item">
-            <div class="stack-item__icon">
-              <span class="material-symbols-outlined">database</span>
-            </div>
-            <div>
-              <h4>Base de Datos</h4>
-              <p>SQL, NoSQL y bases vectoriales para búsqueda semántica.</p>
-            </div>
-          </div>
-          <div class="stack-item">
-            <div class="stack-item__icon">
-              <span class="material-symbols-outlined">cloud</span>
-            </div>
-            <div>
-              <h4>AWS & DevOps</h4>
-              <p>EC2, Lambda, SQS, RDS. Contenedores y despliegues automáticos.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6. Toolkit Tile -->
-      <div class="bento-cell bento-cell--toolkit observe-animate delay-5">
-        <span class="bento-cell__label">TOOLKIT</span>
-        <div class="chip-wrap">
-          <span class="chip">Python</span>
-          <span class="chip">FastAPI</span>
-          <span class="chip">Go</span>
-          <span class="chip">Langchain</span>
-          <span class="chip">Langgraph</span>
-          <span class="chip">MCPs</span>
-          <span class="chip">Vue</span>
-          <span class="chip">Astro</span>
-          <span class="chip">AWS</span>
-          <span class="chip">Docker</span>
-        </div>
-      </div>
-
     </div>
-  </section>
-</BaseLayout>
 
-<script>
-  function updateTime() {
-    const el = document.getElementById('local-time');
-    if (el) {
-      const now = new Date();
-      el.textContent = now.toLocaleTimeString('es-CL', {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true,
-        timeZone: 'America/Santiago'
+    <script>
+      const root = document.documentElement;
+      const START = new Date(2022, 3, 1).getTime();
+      const TZ = "America/Santiago";
+
+      const isEs = () => root.dataset.lang !== "en";
+      const store = (k: string, v: string) => {
+        try {
+          localStorage.setItem(k, v);
+        } catch (_) {}
+      };
+
+      // ── Toggles ──
+      document.getElementById("toggle-lang")?.addEventListener("click", () => {
+        root.dataset.lang = isEs() ? "en" : "es";
+        root.lang = root.dataset.lang;
+        store("eb-lang", root.dataset.lang);
+        tick();
+        renderPush();
       });
-    }
-  }
-  updateTime();
-  setInterval(updateTime, 30000);
+      document.getElementById("toggle-theme")?.addEventListener("click", () => {
+        root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light";
+        store("eb-theme", root.dataset.theme);
+      });
 
-  // Fetch last push from GitHub API
-  async function fetchLastPush() {
-    try {
-      const res = await fetch('/api-portfolio/github/last-push');
-      if (!res.ok) throw new Error('Failed to fetch');
-      
-      const data = await res.json();
-      
-      const repoEl = document.getElementById('last-push-repo');
-      const messageEl = document.getElementById('last-push-message');
-      const shaEl = document.getElementById('last-push-sha');
-      const timeEl = document.getElementById('last-push-time');
-      const linkEl = document.getElementById('last-push-link') as HTMLAnchorElement;
-      
-      if (data.repo && linkEl) {
-        linkEl.href = `https://github.com/${data.repo}`;
+      // ── Reloj y experiencia ──
+      const clockEl = document.getElementById("clock");
+      const dateEl = document.getElementById("date-text");
+      const yearsEl = document.getElementById("years");
+      function tick() {
+        const now = new Date();
+        const loc = isEs() ? "es-CL" : "en-US";
+        if (clockEl)
+          clockEl.textContent = now.toLocaleTimeString(loc, {
+            timeZone: TZ,
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+          });
+        if (dateEl)
+          dateEl.textContent = now.toLocaleDateString(loc, { timeZone: TZ, day: "2-digit", month: "short" });
+        if (yearsEl) yearsEl.textContent = ((now.getTime() - START) / 31557600000).toFixed(1);
       }
-      
-      if (repoEl) repoEl.textContent = data.repo || 'portafolio';
-      if (messageEl) messageEl.textContent = data.message || 'Sin mensaje';
-      if (shaEl) shaEl.textContent = data.sha || '';
-      if (timeEl) {
-        const date = new Date(data.pushed_at);
-        timeEl.textContent = date.toLocaleDateString('es-CL', {
-          day: 'numeric',
-          month: 'short',
-          hour: '2-digit',
-          minute: '2-digit'
-        });
+      tick();
+      setInterval(tick, 1000);
+
+      // ── Último push ──
+      type Push = { repo: string; full: string; at: Date } | { failed: true } | null;
+      let push: Push = null;
+      const repoEl = document.getElementById("push-repo") as HTMLAnchorElement | null;
+      const whenEl = document.getElementById("push-when");
+
+      function ago(d: Date) {
+        const es = isEs();
+        const m = Math.max(0, Math.floor((Date.now() - d.getTime()) / 60000));
+        if (m < 60) return es ? `hace ${m} min` : `${m} min ago`;
+        const h = Math.floor(m / 60);
+        if (h < 24) return es ? `hace ${h} h` : `${h} h ago`;
+        const dd = Math.floor(h / 24);
+        return es ? `hace ${dd} d` : `${dd} d ago`;
       }
-    } catch (e) {
-      console.error('Failed to fetch last push:', e);
-      // Fallback
-      const repoEl = document.getElementById('last-push-repo');
-      const messageEl = document.getElementById('last-push-message');
-      if (repoEl) repoEl.textContent = 'portafolio';
-      if (messageEl) messageEl.textContent = 'No se pudo cargar el último push';
-    }
-  }
-  
-  fetchLastPush();
-</script>
 
-<style>
-  .hero {
-    padding-block: var(--space-xl) var(--space-4xl);
-  }
+      function renderPush() {
+        if (!push || !repoEl || !whenEl) return;
+        if ("failed" in push) {
+          repoEl.textContent = "github.com/Frey-r";
+          whenEl.textContent = isEs() ? "ver actividad reciente" : "see recent activity";
+          return;
+        }
+        repoEl.textContent = push.repo;
+        repoEl.href = `https://github.com/${push.full}`;
+        whenEl.textContent = ago(push.at);
+      }
 
-  /* ── Bento Grid ── */
-  .bento-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
-    grid-auto-rows: auto;
-  }
+      async function getJson(url: string) {
+        const r = await fetch(url);
+        if (!r.ok) throw new Error(String(r.status));
+        return r.json();
+      }
 
-  @media (min-width: 768px) {
-    .bento-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .bento-grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
-  /* ── Cell Base ── */
-  .bento-cell {
-    border-radius: var(--radius-xl);
-    position: relative;
-    overflow: hidden;
-    opacity: 0;
-  }
-
-  /* ── 1. Intro Cell ── */
-  .bento-cell--intro {
-    background-color: var(--color-surface-container-low);
-    padding: var(--space-xl);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 320px;
-  }
-
-  @media (min-width: 768px) {
-    .bento-cell--intro {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-  }
-
-  .bento-cell__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, var(--color-surface-container-low), var(--color-surface-container-highest));
-    opacity: 0.5;
-    pointer-events: none;
-  }
-
-  .bento-cell__content {
-    position: relative;
-    z-index: 1;
-  }
-
-  .bento-cell__label {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: var(--font-weight-bold);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-on-surface-variant);
-    margin-bottom: var(--space-md);
-  }
-
-  .bento-cell__heading {
-    font-size: clamp(1.75rem, 5vw, 3.75rem);
-    font-weight: var(--font-weight-extrabold);
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    color: var(--color-primary);
-    margin-bottom: var(--space-lg);
-  }
-
-  .bento-cell__text {
-    font-size: 1.125rem;
-    color: var(--color-on-surface-variant);
-    line-height: 1.6;
-    max-width: 28rem;
-  }
-
-  .bento-cell__actions {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-    margin-top: var(--space-xl);
-    flex-wrap: wrap;
-  }
-
-  /* ── 2. Project Cell ── */
-  .bento-cell--project {
-    background-color: var(--color-surface-container-high);
-    padding: var(--space-md);
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    min-height: 200px;
-  }
-
-  @media (min-width: 768px) {
-    .bento-cell--project {
-      grid-column: span 2;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .bento-cell--project {
-      grid-column: span 2;
-      grid-row: span 1;
-    }
-  }
-
-  .bento-cell__badge {
-    position: absolute;
-    top: var(--space-xl);
-    left: var(--space-xl);
-    z-index: 20;
-  }
-
-  .bento-cell__badge span {
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(12px);
-    padding: 0.25rem 0.75rem;
-    border-radius: var(--radius-full);
-    font-size: 0.75rem;
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .bento-cell__image-wrap {
-    width: 100%;
-    height: 100%;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    position: relative;
-  }
-
-  .bento-cell__image-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--transition-glacial);
-  }
-
-  .bento-cell--project:hover .bento-cell__image-wrap img {
-    transform: scale(1.05);
-  }
-
-  .bento-cell__image-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
-    display: flex;
-    align-items: flex-end;
-    padding: var(--space-lg);
-  }
-
-  .bento-cell__image-overlay h3 {
-    font-size: 1.5rem;
-    font-weight: var(--font-weight-bold);
-    color: var(--color-surface);
-    margin-bottom: 0.25rem;
-  }
-
-  .bento-cell__image-overlay p {
-    font-size: 0.875rem;
-    color: var(--color-surface-dim);
-  }
-
-  /* ── Last Push Content ── */
-  .bento-cell__project-content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: var(--space-lg);
-    background: linear-gradient(135deg, var(--color-surface-container-high), var(--color-surface-container-highest));
-    border-radius: var(--radius-lg);
-  }
-
-  .bento-cell__project-content h3 {
-    font-size: 1.25rem;
-    font-weight: var(--font-weight-bold);
-    color: var(--color-on-surface);
-    margin-bottom: var(--space-sm);
-  }
-
-  .bento-cell__project-content p {
-    font-size: 0.875rem;
-    color: var(--color-on-surface-variant);
-    line-height: 1.5;
-    margin-bottom: var(--space-md);
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .last-push-meta {
-    display: flex;
-    gap: var(--space-md);
-    font-size: 0.75rem;
-    color: var(--color-secondary);
-  }
-
-  .last-push-meta span:first-child {
-    font-family: monospace;
-    background-color: var(--color-surface-container-lowest);
-    padding: 0.125rem 0.375rem;
-    border-radius: var(--radius-sm);
-  }
-
-  /* ── 3. Status Cell ── */
-  .bento-cell--status {
-    background-color: var(--color-primary);
-    color: var(--color-on-primary);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: var(--space-xl);
-  }
-
-  .bento-cell__status-gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-container));
-    pointer-events: none;
-  }
-
-  .bento-cell__status-content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .bento-cell__status-content h3 {
-    font-size: 1.25rem;
-    font-weight: var(--font-weight-bold);
-    margin-bottom: var(--space-sm);
-  }
-
-  .bento-cell__status-content p {
-    font-size: 0.875rem;
-    opacity: 0.8;
-  }
-
-  .pulse-ring {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    background-color: rgba(204, 234, 214, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: var(--space-md);
-  }
-
-  .pulse-dot {
-    display: block;
-    width: 0.75rem;
-    height: 0.75rem;
-    border-radius: 50%;
-    background-color: var(--color-primary-fixed);
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  /* ── 4. Location Cell ── */
-  .bento-cell--location {
-    background-color: var(--color-surface-container-low);
-    padding: var(--space-lg);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .bento-cell__location-content {
-    position: relative;
-    z-index: 1;
-    margin-top: auto;
-  }
-
-  .bento-cell__time {
-    font-size: 2.5rem;
-    font-weight: var(--font-weight-regular);
-    letter-spacing: -0.04em;
-    color: var(--color-primary);
-    margin-bottom: 0.25rem;
-  }
-
-  .bento-cell__place {
-    font-size: 0.875rem;
-    font-weight: var(--font-weight-bold);
-    color: var(--color-on-surface-variant);
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-  }
-
-  .bento-cell__location-blur {
-    position: absolute;
-    bottom: -2.5rem;
-    right: -2.5rem;
-    width: 12rem;
-    height: 12rem;
-    background-color: var(--color-surface-container-highest);
-    border-radius: 50%;
-    opacity: 0.5;
-    mix-blend-mode: multiply;
-    filter: blur(2rem);
-    pointer-events: none;
-  }
-
-  /* ── 5. Stack Cell ── */
-  .bento-cell--stack {
-    background-color: var(--color-surface-container-low);
-    padding: var(--space-lg);
-    display: flex;
-    flex-direction: column;
-  }
-
-  @media (min-width: 768px) {
-    .bento-cell--stack {
-      grid-column: span 2;
-    }
-  }
-
-  .bento-cell--stack .stack-grid {
-    gap: var(--space-md);
-  }
-
-  .bento-cell--stack h4 {
-    font-size: 0.9375rem;
-    margin-bottom: 0.125rem;
-  }
-
-  .bento-cell--stack .stack-item p {
-    font-size: 0.8125rem;
-    line-height: 1.4;
-  }
-
-  .stack-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-lg) var(--space-xl);
-    height: 100%;
-    align-content: center;
-  }
-
-  @media (min-width: 480px) {
-    .stack-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  .stack-item__icon {
-    flex-shrink: 0;
-  }
-
-  .stack-item p {
-    font-size: 0.8125rem;
-    word-break: break-word;
-  }
-
-  .stack-item {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-md);
-  }
-
-  .stack-item__icon {
-    background-color: var(--color-surface-container-highest);
-    padding: var(--space-sm);
-    border-radius: var(--radius-lg);
-    color: var(--color-primary);
-    flex-shrink: 0;
-  }
-
-  .stack-item h4 {
-    font-weight: var(--font-weight-bold);
-    color: var(--color-on-surface);
-    margin-bottom: 0.25rem;
-  }
-
-  .stack-item p {
-    font-size: 0.875rem;
-    color: var(--color-on-surface-variant);
-  }
-
-  /* ── 6. Toolkit Cell ── */
-  .bento-cell--toolkit {
-    background-color: var(--color-surface-container-low);
-    padding: var(--space-lg);
-    display: flex;
-    flex-direction: column;
-  }
-
-  @media (min-width: 1024px) {
-    .bento-cell--toolkit {
-      grid-column: span 2;
-    }
-  }
-
-  .chip-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-sm);
-    margin-top: auto;
-  }
-</style>
+      async function loadPush() {
+        // 1) Backend propio (con token, sin rate limit del navegador)
+        try {
+          const d = await getJson("/api-portfolio/github/last-push");
+          if (d && d.repo && d.pushed_at) {
+            const full = String(d.repo);
+            push = { repo: full.split("/").pop() || full, full, at: new Date(d.pushed_at) };
+            return renderPush();
+          }
+        } catch (_) {}
+        // 2) API pública de GitHub: eventos
+        try {
+          const evts = await getJson("https://api.github.com/users/Frey-r/events/public");
+          const e = Array.isArray(evts) ? evts.find((x: any) => x.type === "PushEvent") || evts[0] : null;
+          if (e) {
+            push = { repo: e.repo.name.split("/")[1], full: e.repo.name, at: new Date(e.created_at) };
+            return renderPush();
+          }
+        } catch (_) {}
+        // 3) Repos ordenados por push
+        try {
+          const repos = await getJson("https://api.github.com/users/Frey-r/repos?sort=pushed&per_page=1");
+          const rp = Array.isArray(repos) ? repos[0] : null;
+          if (rp) {
+            push = { repo: rp.name, full: rp.full_name, at: new Date(rp.pushed_at) };
+            return renderPush();
+          }
+        } catch (_) {}
+        push = { failed: true };
+        renderPush();
+      }
+      loadPush();
+      setInterval(renderPush, 60000);
+    </script>
+  </body>
+</html>
