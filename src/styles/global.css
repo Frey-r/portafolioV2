@@ -109,24 +109,28 @@ html:not([data-theme="light"]) .only-light {
   overflow: hidden;
 }
 
+/* Fondo: degradados radiales en vez de círculos con filter: blur().
+   Un filter enorme bajo elementos con backdrop-filter provoca en Chrome
+   franjas sin desenfocar (tiles) en las tarjetas glass. */
 .blobs {
   position: fixed;
   inset: -20%;
   z-index: 0;
   pointer-events: none;
-  filter: blur(90px);
   opacity: 0.75;
 }
 .blob {
   position: absolute;
   border-radius: 50%;
+  transform: scale(1.45);
+  background: radial-gradient(closest-side, var(--c) 0%, var(--c) 30%, transparent 100%);
 }
 .blob--1 {
   top: 6%;
   left: 8%;
   width: 44vw;
   height: 44vw;
-  background: var(--a1);
+  --c: var(--a1);
   opacity: 0.34;
 }
 .blob--2 {
@@ -134,7 +138,7 @@ html:not([data-theme="light"]) .only-light {
   right: 4%;
   width: 38vw;
   height: 38vw;
-  background: var(--a2);
+  --c: var(--a2);
   opacity: 0.3;
 }
 .blob--3 {
@@ -142,7 +146,7 @@ html:not([data-theme="light"]) .only-light {
   left: 34%;
   width: 36vw;
   height: 36vw;
-  background: var(--a3);
+  --c: var(--a3);
   opacity: 0.26;
 }
 
